@@ -1,6 +1,7 @@
 {
   "namespace":"org.fimod.lei",
   "name":"Legal Entity Identifier",
+  "documentation":"An association, corporation, partnership, proprietorship, trust, or individual that has legal standing in the eyes of the law. A legal entity has legal capacity to enter into agreements or contracts, assume obligations, incur and pay debts, sue and be sued in its own right, and to be held responsible for its actions.",
   "version":"1.3.0",
   "organization":{
     "name":"fimod",
@@ -25,7 +26,16 @@
   "license":{
     "name":"Apache Software License v2.0",
     "description":"Apache Software License",
-    "copyrightNotice":"(C) Copyright 2012 FiMod (http://fimod.org)"
+    "copyrightNotice":"(C) Copyright 2012 FiMod (http://fimod.org)",
+    "webUrl":"http://www.apache.org/licenses/LICENSE-2.0.html"
+  },
+  "revisionControlSystem":{
+    "system":"github",
+    "webUrl":"https://github.com/fimod/lei"
+  },
+  "issueTracker":{
+    "system":"github",
+    "webUrl":"https://github.com/fimod/lei/issues"
   },
   "nodes":[{
     "name":"LEtoCountryRelationshipType",

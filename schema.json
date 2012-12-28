@@ -1,0 +1,2612 @@
+{
+  "namespace":"org.fimod.lei",
+  "name":"Legal Entity Identifier",
+  "version":"1.3.0",
+  "organization":{
+    "name":"fimod",
+    "webSiteUrl":"http://fimod.org",
+    "logoUrl":"classpath:/fimod-logo.png"
+  },
+  "contributors":[{
+    "name":"Predrag Dizdarevic"
+  },{
+    "name":"Tom Charlton"
+  },{
+    "name":"John Carroll"
+  },{
+    "name":"Garry Wright"
+  },{
+    "name":"Ken Price"
+  },{
+    "name":"Niel Siekerka"
+  },{
+    "name":"Philip Dodds"
+  }],
+  "license":{
+    "name":"Apache Software License v2.0",
+    "description":"Apache Software License",
+    "copyrightNotice":"(C) Copyright 2012 FiMod (http://fimod.org)"
+  },
+  "nodes":[{
+    "name":"LEtoCountryRelationshipType",
+    "description":"LE to Country Relationship Type",
+    "documentation":"Indicates how this Country is related to the Legal Entity.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"COUNTRY OF INCORPORATION"
+  },{
+    "name":"DocumentBriefDescription",
+    "description":"Document Brief Description",
+    "documentation":"A short synopsis of the Document contents.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Corporate Bylaws"
+  },{
+    "name":"PhoneNumber",
+    "description":"Phone Number",
+    "documentation":"The phone number associated with this Address ID",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"DependentorSubLocality",
+    "description":"Dependent or Sub-Locality",
+    "documentation":"Free form text\u2013 in the US municipality",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"New York City"
+  },{
+    "name":"Country",
+    "description":"Country",
+    "documentation":"Each occurrence of Country names and identifies one Country that is of interest or has one or more relationships with a Legal Entity.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"CountryName",
+      "name":"Country Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CountryISOCode",
+      "name":"Country ISO Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"OtherCountryInformationTBD",
+      "name":"Other (Country) Info(rmation - TBD)",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity - Common",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"Address",
+      "name":"Address",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"CountryRegionRelationship",
+      "name":"Country Region Relationship",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEinCountry",
+      "name":"LE in Country",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LegalEntityBusiness",
+      "name":"Legal Entity - Business",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"TaxorRegulatoryAuthority",
+      "name":"Tax or Regulatory Authority",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"LEGroupMember",
+    "description":"LE Group Member",
+    "documentation":"Each occurrence of LE Group Member defines one Legal Entity that is a member of one LE Group. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LEGroup",
+      "name":"Legal Entity Group ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"MembershipStartDate",
+      "name":"M(e)mb(e)r(ship) Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"MembershipEndDate",
+      "name":"M(e)mb(e)r(ship) End Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"LegalEntityIndicator",
+    "description":"Legal Entity Indicator",
+    "documentation":"Indicates if the LE has been assigned an ISO 17442 Legal Entity Identifier.",
+    "nodeType":{
+      "dataType":"Boolean"
+    },
+    "relationships":[],
+    "sampleValue":"NO"
+  },{
+    "name":"PostalAddressLine7",
+    "description":"Postal Address - Line 7",
+    "documentation":"Supplemental Address Line.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE7"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE7"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE7"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"IndividualFullName",
+    "description":"Individual Full Name",
+    "documentation":"The full name of this individual",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Robert Rubin"
+  },{
+    "name":"DataSourceName",
+    "description":"Data Source Name",
+    "documentation":"The text name describing this Data Source",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Bloomberg"
+  },{
+    "name":"MembershipEndDate",
+    "description":"Membership End Date",
+    "documentation":"The latest or end of period date in which a LE was last a member of a LE Group.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"BirthDate",
+    "description":"Birth Date",
+    "documentation":"The date of birth of an Individual.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"09-Jul-1945"
+  },{
+    "name":"CorporateEventEndDate",
+    "description":"Corporate Event End Date",
+    "documentation":"The latest or end of period date this Financial Info had effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"15-Jun-2012"
+  },{
+    "name":"BusinessCategoryName",
+    "description":"Business Category Name",
+    "documentation":"The Name for this Category within this Business Hierachy.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"North East Division"
+  },{
+    "name":"ListingStatus",
+    "description":"Listing Status",
+    "documentation":"A code that indicates if a Legal Entity is listed on any organized exchange as provided by Bloomberg.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"LISTED"
+  },{
+    "name":"OtherCountryInformationTBD",
+    "description":"Other Country Information - TBD",
+    "documentation":"T.B.D.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"To be determined."
+  },{
+    "name":"BusinessHierarchySequenceNumber",
+    "description":"Business Hierarchy Sequence Number",
+    "documentation":"A number that indicates the Category's \"rank\" within the Business Hierarchy. Allows the Category members of a Business Hierarchy to be arranged in a defined order.",
+    "nodeType":{
+      "dataType":"Number"
+    },
+    "relationships":[],
+    "sampleValue":"7.0"
+  },{
+    "name":"HierarchyLevelNumber",
+    "description":"Hierarchy Level Number",
+    "documentation":"Indicates the strata in which this Category is ranked. The top-most strata is \"1\", the second level is \"2\", etc. All Categories within the same strata will have the same Level Number.",
+    "nodeType":{
+      "dataType":"Number"
+    },
+    "relationships":[],
+    "sampleValue":"2.0"
+  },{
+    "name":"CorporateEventStartDate",
+    "description":"Corporate Event Start Date",
+    "documentation":"The earliest or beginning of period date this Financial Info had effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"15-Jun-2012"
+  },{
+    "name":"LegalEntityGroupType",
+    "description":"Legal Entity Group Type",
+    "documentation":"The ID of Data Source that provides this Financial Information.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"LE ONLY"
+  },{
+    "name":"RatingsTypeCode",
+    "description":"Ratings Type Code",
+    "documentation":"Allows different types of Rating from same agency. E.g., CURRENT, OUTLOOK, etc.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"CURR"
+  },{
+    "name":"DataSourceLEKeyID",
+    "description":"Data Source LE Key ID",
+    "documentation":"The ID of the Legal Entity represented by this Data Source. Provides additional information regarding a Data Source.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"1000525.0"
+  },{
+    "name":"RegistrationNumber",
+    "description":"Registration Number",
+    "documentation":"The Primary Registration Number for this Legal Entity. If registered in multiple locations, then additional Registration Numbers each stored as occurrence of Tax/Regulatory Identifier.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"NYS-0567852"
+  },{
+    "name":"DocumentAuthor",
+    "description":"Document Author",
+    "documentation":"The name of the Author of the Document",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"UNKNOWN"
+  },{
+    "name":"ClassificationCategoryName",
+    "description":"Classification Category Name",
+    "documentation":"The Name for this Category within this Classification Set.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"AUTOMOTIVE"
+  },{
+    "name":"ClassificationSetAbbreviation",
+    "description":"Classification Set Abbreviation",
+    "documentation":"A short name or abbreviation for this Classification Set 2.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"GICS"
+  },{
+    "name":"AddressBlockOverrideType",
+    "description":"Address Block Override Type",
+    "documentation":"Allows override of standard Address Block Type for this Address. If blank, standard Address Block Type code used to format address.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"QuantitativeData/Link",
+    "description":"Quantitative Data/Link",
+    "documentation":"The URL or similar link to the specific Quantitative Data for this LE.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"LERelationshipType",
+    "description":"LE Relationship Type",
+    "documentation":"Each occurrence of LE Relationship Type name and defines a particular type of LE-to-LE Relationship that has well-defined meaning in the FIMOD. Relationships may be limited to two members only (one Legal Entity and its one Ultimate Parent) or any number of members (e.g., one Legal Entity and \"N\" other Legal Entities within a designated grouping).",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LERelationshipTypeName",
+      "name":"LE Rel(ationship) Type Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RelationshipTypeNumberCode",
+      "name":"Rel(ationship) Type Num(ber) Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEtoLERelationship",
+      "name":"LE to LE Relationship",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"Title",
+    "description":"Title",
+    "documentation":"The prefix title to formally address an Individual.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"Mr."
+  },{
+    "name":"IndividualTaxID",
+    "description":"Individual Tax ID",
+    "documentation":"The tax identification number of an Individual.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"InCategoryStartDate",
+    "description":"In Category Start Date",
+    "documentation":"The earliest date this LE was classified in this Category.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":""
+  },{
+    "name":"WebLink",
+    "description":"Web Link",
+    "documentation":"The URL of a web page contain address or address-related information.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSURL"
+    },{
+      "sourceName":"??",
+      "attributeName":"TRADEWEBID"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"LEAlternateName",
+    "description":"LE Alternate Name",
+    "documentation":"Each occurrence of LE Alternate Name provides an additional name or alias in a designated language provided by a Data Source by which a Legal Entity is known.  Every LE has one Legal Entity Name attribute that is stored on the Legal Entity and may have \"n\" number of additional alternate names.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"LE ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"DataSource",
+      "name":"Alternate Name Source ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"AlternateNameType",
+      "name":"Alt(ernate) Name Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAlternateName",
+      "name":"LE Alt(ernate) Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAlternateNameImage",
+      "name":"LE Alt(ernate) Name Image",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LanguageofNameCode",
+      "name":"Lang(uage) of Name Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEIdentifier",
+      "name":"LE Identifier ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LEAltNameStartDate",
+      "name":"LE Alt Name Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAltNameEndDate",
+      "name":"LE Alt Name End Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAltNameStatus",
+      "name":"LE Alt Name Status",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"OfficialBusinessName",
+    "description":"Official Business Name",
+    "documentation":"The Official Business Name, if different from the Legal Entity Name.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXISSUERNAME"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGCOMPANYNAME"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGPARENTNAME"
+    },{
+      "sourceName":"GICS",
+      "attributeName":"GICSISSUERNAME"
+    },{
+      "sourceName":"ICB",
+      "attributeName":"ICBISSUERNAME"
+    },{
+      "sourceName":"MARKIT",
+      "attributeName":"MARKITENTITYNAME"
+    },{
+      "sourceName":"MOODY",
+      "attributeName":"MOODYORGANIZATIONNAME"
+    },{
+      "sourceName":"REUTERS",
+      "attributeName":"REUTERSISSUERNAME"
+    },{
+      "sourceName":"SNP",
+      "attributeName":"SNPENTITYNAME"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSINSTITUTIONNAME"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"City",
+    "description":"City",
+    "documentation":"Free form text but could utilize/define domain of values",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"New York City"
+  },{
+    "name":"Date/TimeLastReviewed",
+    "description":"Date/Time Last Reviewed",
+    "documentation":"The date and time this LE data was formally reviewed.",
+    "nodeType":{
+      "dataType":"DateTime"
+    },
+    "relationships":[],
+    "sampleValue":"15-Dec-2012"
+  },{
+    "name":"DocumentDate",
+    "description":"Document Date",
+    "documentation":"The date the Document was published.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"15-May-1992"
+  },{
+    "name":"PostalAddressLine4",
+    "description":"Postal Address - Line 4",
+    "documentation":"A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE4"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE4"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE4"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"LegalEntityGroupName",
+    "description":"Legal Entity Group Name",
+    "documentation":"A descriptive name for a LE Group.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Large Financial Services Firms"
+  },{
+    "name":"AddressBlockType",
+    "description":"Address Block Type",
+    "documentation":"For POSTAL ADDRESS, Indicates the sequence and structure for assembling the components into a Formatted Address Block. Default is \"USPS.\"",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"USPS"
+  },{
+    "name":"AlternateNameType",
+    "description":"Alternate Name Type",
+    "documentation":"The name or term used for the entire class of this particular type or genre of Alternative Name 1",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"SHORT NAME"
+  },{
+    "name":"StateofIncorporation",
+    "description":"State of Incorporation",
+    "documentation":"The state in which this LE was first incorporated.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGSTATEOFINCORP"
+    }],
+    "sampleValue":"NYS"
+  },{
+    "name":"LegalEntityType",
+    "description":"Legal Entity Type",
+    "documentation":"A code that distinguishes one type of Legal Entity from another. Each separate Legal Entity Type has different data attribute and/or data relationship requirements.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"BUSINESS"
+  },{
+    "name":"AuthorityType",
+    "description":"Authority Type",
+    "documentation":"Indicates is this a \"TAX\" or \"REG\"regulator authority.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"TAX"
+  },{
+    "name":"LEAltNameStatus",
+    "description":"LE Alt Name Status",
+    "documentation":"The state or status of this name regardings it's use.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"ACTIVE"
+  },{
+    "name":"Restrictions",
+    "description":"Restrictions",
+    "documentation":"Any restrictions against the LE.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Numerous"
+  },{
+    "name":"CorporateEventLinkID",
+    "description":"Corporate Event Link ID",
+    "documentation":"The file ID,  URL or similar link to the details of a specific Corporate Action Event. The details regarding the terms and conditions of the Corporate Action are stored outside the Legal Entity Data Domain but may be referenced by this ID Key or URL.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"SH06152012"
+  },{
+    "name":"TaxIdentifierValue",
+    "description":"Tax Identifier Value",
+    "documentation":"The value of the Tax Identifier for a LE.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"2.01149555E8"
+  },{
+    "name":"LEClassificationCategory",
+    "description":"LE Classification Category",
+    "documentation":"Each occurrence of Classification Category identifies one Legal Entity that has been categorized in a Category Grouping within a Classification Set.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"ClassificationCategory",
+      "name":"Classification Category ID",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"InCategoryStartDate",
+      "name":"In Categ(ory) Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"InCategoryEndDate",
+      "name":"In Categ(ory) End Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"LEAddressEndDate",
+    "description":"LE Address End Date",
+    "documentation":"A Date after which a Legal Entity Address is no longer active.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"TaxIDStartDate",
+    "description":"Tax ID Start Date",
+    "documentation":"The earliest date this Tax ID was assigned to this LE.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"01-Jan-1955"
+  },{
+    "name":"LEStatus",
+    "description":"LE Status",
+    "documentation":"The certification status of the LE.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXFSASTATUS"
+    }],
+    "sampleValue":"AVAILABLE-CERTIFIED"
+  },{
+    "name":"IDStartDate",
+    "description":"ID Start Date",
+    "documentation":"The earliest date that a LE Identifier was in effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"28-Jan-2012"
+  },{
+    "name":"CountryName",
+    "description":"Country Name",
+    "documentation":"The official name for a Country",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"United States of America"
+  },{
+    "name":"PrimaryListingSymbol",
+    "description":"Primary Listing Symbol",
+    "documentation":"The listing symbol for the common stock of the entity on its primary exchange listing. ",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BBGULTPARENTEXCHANGETICKER"
+    }],
+    "sampleValue":""
+  },{
+    "name":"LegalEntityCommon",
+    "description":"Legal Entity - Common",
+    "documentation":"Each occurrence of Legal Entity - Common provides standard information applicable to every Legal Entity. Additional attributes describing a particular type or category of Legal Entity are dependent upon the Legal Entity Type attribute and are further defined by Legal Entity - Business and Legal Entity - Individual sub-type entities.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityName",
+      "name":"Legal Entity Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntityType",
+      "name":"Legal Entity Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntitySubType",
+      "name":"Legal Entity Sub Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PrimaryCurrency",
+      "name":"Primary Currency",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PrimaryTaxID",
+      "name":"Primary Tax  ID",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country of Domicile ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"StateofDomicile",
+      "name":"State of Domicile",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country of Risk ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LegalEntityIndicator",
+      "name":"Legal Entity Ind(icator)",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEStatus",
+      "name":"LE Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Date/TimeLastReviewed",
+      "name":"Date/Time Last Reviewed",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEGroupMember",
+      "name":"LE Group Member",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEAlternateName",
+      "name":"LE Alternate Name",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEClassificationCategory",
+      "name":"LE Classification Category",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LegalEntityIndividual",
+      "name":"Legal Entity - Individual",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LERatings",
+      "name":"LE Ratings",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEIdentifier",
+      "name":"LE Identifier",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LECorporateEvent",
+      "name":"LE Corporate Event",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEtoLERelationship",
+      "name":"LE to LE Relationship",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEAddress",
+      "name":"LE Address",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEinCountry",
+      "name":"LE in Country",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEDocument",
+      "name":"LE Document",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"FinancialInfo",
+      "name":"Financial Info",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"TaxorRegIdentifier",
+      "name":"Tax or Reg Identifier",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"TaxIDEndDate",
+    "description":"Tax ID End Date",
+    "documentation":"The last date this Tax ID was assigned to this LE.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"AddressName",
+    "description":"Address Name",
+    "documentation":"Address or building name",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Goldman Sacks Corporate"
+  },{
+    "name":"GeoLocationGPSCode",
+    "description":"Geo Location GPS Code",
+    "documentation":"The GPS co-ordinates for this address",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"21° 16' 674S"
+  },{
+    "name":"LegalEntityName",
+    "description":"Legal Entity Name",
+    "documentation":"The legal, official name for this LE expressed in English. Additional names for the Legal Entity, if required, are stored on separate occurrences of Legal Entity Alternate Name including the Legal Entity Name expressed in its native language.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Goldman Sachs Group, Inc."
+  },{
+    "name":"BusinessHierarchyType",
+    "description":"Business Hierarchy Type",
+    "documentation":"Describes the type or genre of this Business Hierarchy.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"ORGANIZATION"
+  },{
+    "name":"Salutation",
+    "description":"Salutation",
+    "documentation":"The desired opening salutation when addressing or meeting an Individual.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Bob"
+  },{
+    "name":"LegalEntityIndividual",
+    "description":"Legal Entity - Individual",
+    "documentation":"Each occurrence of Legal Entity - Individual identifies, names and supplies indicative information regarding one Natural Person. Each Individual is a human being as contrasted to a Legal Person, such as a Corporation having legal standing.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"IndividualFullName",
+      "name":"Individual Full Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"GivenName",
+      "name":"Given Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"MiddleName",
+      "name":"Middle Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FamilyName",
+      "name":"Family Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Title",
+      "name":"Title",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Salutation",
+      "name":"Salutation",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"IndividualPrivacyCode",
+      "name":"Individual Privacy Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"BirthDate",
+      "name":"Birth Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"IndividualTaxID",
+      "name":"Individual Tax ID",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"RatingValue",
+    "description":"Rating Value",
+    "documentation":"A measure of the financial worthiness of a LE usually expressed as a letter and/or numeric score.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Aaa"
+  },{
+    "name":"AddressRole",
+    "description":"Address Role",
+    "documentation":"Indicates how this address is being used in conjunction with this Legal Entity.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"CORP HEADQUARTER"
+  },{
+    "name":"IdentifierName",
+    "description":"Identifier Name",
+    "documentation":"The formal  name of a a specific Tax Identifier issued by the Tax Authority.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"EMPLOYER IDENTIFICATIOIN NUMBER"
+  },{
+    "name":"InCategoryEndDate",
+    "description":"In Category End Date",
+    "documentation":"The last date this LE was classified in this Category.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":""
+  },{
+    "name":"IDEndDate",
+    "description":"ID End Date",
+    "documentation":"The last date that a LE Identifer was in effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"PrimaryExchangeCode",
+    "description":"Primary Exchange Code",
+    "documentation":"Code that identifies the exchange on which the LE is listed.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXPRIMARYXCHGNAME"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGEXCHANGECODE"
+    }],
+    "sampleValue":"NYSE"
+  },{
+    "name":"LegalEntitySubType",
+    "description":"Legal Entity Sub Type",
+    "documentation":"The sub-type of entity determines reporting requirements and hierarchy methodologies to be used",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXENTITYTYPE"
+    },{
+      "sourceName":"MARKIT",
+      "attributeName":"MARKITENTITYTYPE"
+    }]
+  },{
+    "name":"FinancialInfoTextValue",
+    "description":"Financial Info Text  Value",
+    "documentation":"A financial measure expressed in alphanumeric characters such as a Rating Code.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"GeoRegion",
+    "description":"Geo Region",
+    "documentation":"Each occurrence of Geographic Region names and identifies one geographic area. The Geographic Area  may be within a single country or may extend across multiple countries as indicated by the Region Span attribute. Each Geographic Area  in turn has one of more Tax or Regulatory Authorities that oversee Legal Entities.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"GeoRegionName",
+      "name":"Geo Region Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"GeoRegionType",
+      "name":"Geo Region Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RegionSpan",
+      "name":"Region Span",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CountryRegionRelationship",
+      "name":"Country Region Relationship",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"TaxorRegulatoryAuthority",
+      "name":"Tax or Regulatory Authority",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"FormationDate",
+    "description":"Formation Date",
+    "documentation":"The Date of Incorporation or establishment.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"07/15/1869"
+  },{
+    "name":"OwnershipPercentage",
+    "description":"Ownership Percentage",
+    "documentation":"The percent of ownership of a Secondary Legal Entity held by the Parent or Primary Legal Entity ",
+    "nodeType":{
+      "dataType":"Number"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXPERCENTOWNEDBYPARENT"
+    }],
+    "sampleValue":"0.6525"
+  },{
+    "name":"LERatings",
+    "description":"LE Ratings",
+    "documentation":"Each occurrence of LE Ratings contains one time-sensitive score or evaluation of the credit worthiness of a Legal Entity that has been published by a Data Source, usually a credit rating agency.  Each LE Rating represents that Data Source's evaluation of qualitative and quantitative information about the LE including both public and in some cases, private information obtained by the rating agency.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"DataSource",
+      "name":"Data Source ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"RatingsTypeCode",
+      "name":"Ratings Type Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RatingName",
+      "name":"Rating Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RatingValue",
+      "name":"Rating Value",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RatingOutlookValue",
+      "name":"Rating Outlook Value",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RatingStatus",
+      "name":"Rating Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RatingStartDate",
+      "name":"Rating Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RatingEndDate",
+      "name":"Rating End Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"RelationshipEndDate",
+    "description":"Relationship End Date",
+    "documentation":"The latest date that a Legal Entity Relationship was in effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"LEAlternateName",
+    "description":"LE Alternate Name",
+    "documentation":"An alternate, text name for a Legal Entity in contrast to it's 0fficial Legal Name which is stored on the LE Entity itself.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"GOLDMAN SACHS GRP"
+  },{
+    "name":"EventStatus",
+    "description":"Event Status",
+    "documentation":"The state or status of this Corporate Event.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"PENDING"
+  },{
+    "name":"IndividualPrivacyCode",
+    "description":"Individual Privacy Code",
+    "documentation":"A code that indicates the extent that Individual information that is shared or accessible.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"LIMITED - NAME ONLY"
+  },{
+    "name":"FamilyName",
+    "description":"Family Name",
+    "documentation":"The Last name for this Individual.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Rubin"
+  },{
+    "name":"AddressType",
+    "description":"Address Type",
+    "documentation":"A code that indicates if this address is POSTAL, EMAIL, WEBKLINK, PHONE NUMBER, or FAX NUMBER 1.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"POSTAL"
+  },{
+    "name":"LEIdentifierType",
+    "description":"LE Identifier Type",
+    "documentation":"The type or genre of a Legal Entity Identifier. ",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"TICKER"
+  },{
+    "name":"ClassificationCategory",
+    "description":"Classification Category",
+    "documentation":"Each occurrence of Classification Category defines and name one well-defined grouping within a Classification Set for analyzing Legal Entities.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"ClassificationCategoryName",
+      "name":"Class(ification) Category Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"ClassificationCategoryCode",
+      "name":"Class(ification) Category Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"ClassificationCategory",
+      "name":"Parent Classification Category ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"ClassificationSequenceNumber",
+      "name":"Class(ification) Sequence Number",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEClassificationCategory",
+      "name":"LE Classification Category",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"ClassificationSetName",
+    "description":"Classification Set Name",
+    "documentation":"The Name or standard abbreviation for this Classification Set.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Global Industry Classification Standard"
+  },{
+    "name":"IdentifierStatus",
+    "description":"Identifier Status",
+    "documentation":"Indicates the state of the LE Identifier at the Source 2",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"ACTIVE"
+  },{
+    "name":"FinancialInfoType",
+    "description":"Financial Info Type",
+    "documentation":"The specific type of Quantitative Data linked this LE.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"BALANCE SHEET"
+  },{
+    "name":"SovereignOwnershipIndicator",
+    "description":"Sovereign Ownership Indicator",
+    "documentation":"Indicates if the LE is owned in whole or in part by a governing or sovereign authority.",
+    "nodeType":{
+      "dataType":"Boolean"
+    },
+    "relationships":[],
+    "sampleValue":"NO"
+  },{
+    "name":"RatingStartDate",
+    "description":"Rating Start Date",
+    "documentation":"The earliest or beginning of period date this Rating had effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"MOODY??",
+      "attributeName":"RATING DATE"
+    }],
+    "sampleValue":"15-Feb-2012"
+  },{
+    "name":"FinancialInfoStartDate",
+    "description":"Financial Info Start Date",
+    "documentation":"The earliest or beginning of period date this Financial Info had effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":""
+  },{
+    "name":"LERelationshipTypeName",
+    "description":"LE Relationship Type Name",
+    "documentation":"Free form text describing a well-defined Entity to Entity Relationship Type.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"ULTIMATE PARENT"
+  },{
+    "name":"RelationshipStartDate",
+    "description":"Relationship Start Date",
+    "documentation":"The earliest date that a Legal Entity Relationship was in effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"01-Jan-1955"
+  },{
+    "name":"AuthorityName",
+    "description":"Authority Name",
+    "documentation":"The name of the Tax or Regulatory Authority.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Internal Revenue Service"
+  },{
+    "name":"PostalAddressLine1",
+    "description":"Postal Address - Line 1",
+    "documentation":"Free form text but typically contains first line of Postal Address.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE1"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE1"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE1"
+    }],
+    "sampleValue":"200 West Street"
+  },{
+    "name":"CorporateActionDescription",
+    "description":"Corporate Action Description",
+    "documentation":"A short description of the Corporate Action Event.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Annual Shareholder Meeting."
+  },{
+    "name":"LegalForm",
+    "description":"Legal Form",
+    "documentation":"The legal structure for the LE.  All developed countries have their own version of corporate law that defines the types of corporations that may be formed in their country anfd how they will be registered and regulated.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"MARKIT",
+      "attributeName":"MARKITENTITYLEGALFORM"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSLEGALFORM"
+    }],
+    "sampleValue":"US CORPORATION"
+  },{
+    "name":"FiscalYearEnd",
+    "description":"Fiscal Year End",
+    "documentation":"The Fiscal Year End Month of the LE.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"12.0"
+  },{
+    "name":"Address",
+    "description":"Address",
+    "documentation":"Each occurrence of Address provides one mailing, email, or web link address. The Address Type attribute designated the specific type of address. The Address Block Type specifies how individual address lines should be formatted for custom address line structuring in order to support different geographic address standards. One Address may be used or shared by any number of Individuals and/or for any number of Legal Entities.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"AddressType",
+      "name":"Address Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"AddressBlockType",
+      "name":"Address Block Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"AddressName",
+      "name":"Address Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine1",
+      "name":"Postal Address - Line 1",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine2",
+      "name":"Postal Address - Line 2",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine3",
+      "name":"Postal Address - Line 3",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine4",
+      "name":"Postal Address - Line 4",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine5",
+      "name":"Postal Address - Line 5",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine6",
+      "name":"Postal Address - Line 6",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine7",
+      "name":"Postal Address - Line 7",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PostalAddressLine8",
+      "name":"Postal Address - Line 8",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"City",
+      "name":"City",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"State/Province/Canton",
+      "name":"State/Province/Canton",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"ZIP/PostalCode",
+      "name":"ZIP/Postal Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"GeoLocationGPSCode",
+      "name":"Geo Location (GPS) Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Locality",
+      "name":"Locality",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DependentorSubLocality",
+      "name":"Dependent or Sub-Locality",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"PhoneNumber",
+      "name":"Phone Number",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FaxNumber",
+      "name":"Fax Number",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"EmailAddress",
+      "name":"Email Address",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"WebLink",
+      "name":"Web Link",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAddress",
+      "name":"LE Address",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"FinancialInfoEndDate",
+    "description":"Financial Info End Date",
+    "documentation":"The latest or end of period date this Financial Info had effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":""
+  },{
+    "name":"LEIdentifier",
+    "description":"LE Identifier",
+    "documentation":"Each occurrence of LE Identifier contains one number, series of alphanumeric characters, or similar unique code provided by a Data Source that is used to identify one Legal Entity.  There may be multiple different LE Identifiers for each Legal Entity. Each different LE Identifier has a LE Identifier Type attribute that specifies the organization or body that establishes, assigns, and maintains that particular Identifier type.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LEIdentifierType",
+      "name":"LE Identifier Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DataSource",
+      "name":"Data Source ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LEIdentifierValue",
+      "name":"LE Identifier Value",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DataSource",
+      "name":"LE Source Name ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"IDStartDate",
+      "name":"ID Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"IDEndDate",
+      "name":"ID End Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"IdentifierStatus",
+      "name":"Identifier Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAlternateName",
+      "name":"LE Alternate Name",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"PostalAddressLine8",
+    "description":"Postal Address - Line 8",
+    "documentation":"Supplemental Address Line.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"DataSource",
+    "description":"Data Source",
+    "documentation":"Each occurrence of Data Source names and identifies an orginating source of information or  data utilized within the FIMOD Legal Entity Data Model.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"DataSourceName",
+      "name":"Data Source Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DataSourceLEKeyID",
+      "name":"Data S(ou)rce LE Key ID",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAlternateName",
+      "name":"LE Alternate Name",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LERatings",
+      "name":"LE Ratings",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LEIdentifier",
+      "name":"LE Identifier",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"ClassificationSet",
+      "name":"Classification Set",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"CorporateEvent",
+      "name":"Corporate Event",
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"FinancialInfo",
+      "name":"Financial Info",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"CountryRegionRelationship",
+    "description":"Country Region Relationship",
+    "documentation":"Each occurrence of Country Region Relationship identifies one Country that participates in one Geographic Region.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"Country",
+      "name":"Country ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"GeoRegion",
+      "name":"Geo Region ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"InRegionStartDate",
+      "name":"In Region Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"InRegionEndDate",
+      "name":"In Region End Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"StartofCountryRelationshipDate",
+    "description":"Start of Country Relationship Date",
+    "documentation":"The earliest date this Country was related to the Legal Entity.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"01-Jan-2001"
+  },{
+    "name":"DissolutionDate",
+    "description":"Dissolution Date",
+    "documentation":"The Date the LE was officially dissolved.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"N.A."
+  },{
+    "name":"RelationshipTypeNumberCode",
+    "description":"Relationship Type Number Code",
+    "documentation":"Indicates how many LE's are allowed in this Relationship Type. 1",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"TWO"
+  },{
+    "name":"FinancialInfoQuantitativeValue",
+    "description":"Financial Info Quantitative Value",
+    "documentation":"A numeric value of a particular type of LE Financial Information.",
+    "nodeType":{
+      "dataType":"Number"
+    },
+    "relationships":[],
+    "sampleValue":"5.506747E8"
+  },{
+    "name":"StateofDomicile",
+    "description":"State of Domicile",
+    "documentation":"The State in which this LE is domiciled.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":""
+  },{
+    "name":"RatingName",
+    "description":"Rating Name",
+    "documentation":"The name of the specific rating.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Moody's Corporate Bond Rating"
+  },{
+    "name":"ClassificationCategoryCode",
+    "description":"Classification Category Code",
+    "documentation":"A standard abbreviation for this Classification within this Classfication Set.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"AUTO"
+  },{
+    "name":"LECorporateEvent",
+    "description":"LE Corporate Event",
+    "documentation":"Each occurrence of LE Corporate Event defines one Business Legal Entity effected by one Corporate Event. Each Corporate Event may impact one or multiple Business Legal Entities (e.g., merger, acquistion, etc.). If the Corporate Event impacts \"n\" number of LE's, then there will be \"n\" occurrence of LE Corporate Event, one for each Business LE impacted by the event.  ",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"CorporateEvent",
+      "name":"Corporate Event ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"EventSequenceNumber",
+      "name":"Event Seq(uence) Number",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"AddressStatus",
+    "description":"Address Status",
+    "documentation":"A code that indicates if a particular Address is ACTIVE, PENDING, or CLOSED.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"ACTIVE"
+  },{
+    "name":"LEtoLERelationship",
+    "description":"LE to LE Relationship",
+    "documentation":"Each occurrence of LE to LE Relationship defines a pair of two Legal Entities that are related to each other.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LERelationshipType",
+      "name":"LE Relationship Type ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"RelationshipRole",
+      "name":"Relationship Role",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity  Parent - 1",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity  Child - 2",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"OwnershipPercentage",
+      "name":"Ownership Percentage",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAddress",
+      "name":"LE Address ID",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"RelationshipStartDate",
+      "name":"Rel(ationship) Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RelationshipEndDate",
+      "name":"Rel(ationship) End Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Date/TimeLastReviewed",
+      "name":"Date/Time Last Reviewed",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"PostalAddressLine6",
+    "description":"Postal Address - Line 6",
+    "documentation":"Supplemental Address Line.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE6"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE6"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE6"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"RelationshipRole",
+    "description":"Relationship Role",
+    "documentation":"A code that explains how two LE's are related to each other.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"ULTIMATE PARENT"
+  },{
+    "name":"RatingStatus",
+    "description":"Rating Status",
+    "documentation":"The state of status of Rating score.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"MOODY??",
+      "attributeName":"RATING STATUS"
+    }],
+    "sampleValue":"ACTIVE"
+  },{
+    "name":"LEAddressStartDate",
+    "description":"LE Address Start Date",
+    "documentation":"A Date on which a Legal Entity Address became active.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"01-Jan-2010"
+  },{
+    "name":"ClassificationSet",
+    "description":"Classification Set",
+    "documentation":"Each occurrence of Classification Set provides one well-defined taxonomy, hierarchy, or listing structure for organizing and analyzing Legal Entities by grouping them into one or more Classification Categories. A Legal Entity may be categorized into any number of LE Classification Set/Categories via the LE Classification Category entity.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"ClassificationSetName",
+      "name":"Class(ification) Set Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"ClassificationSetAbbreviation",
+      "name":"Class(ification) Set Abbrev(iation)",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DataSource",
+      "name":"Data Source ",
+      "cardinality":"BelongsTo"
+    }]
+  },{
+    "name":"Locality",
+    "description":"Locality",
+    "documentation":"Free form text but typically the city or geographic locale ",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Wall Street"
+  },{
+    "name":"RatingEndDate",
+    "description":"Rating End Date",
+    "documentation":"The latest or end of period date this Rating had effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"LEAltNameStartDate",
+    "description":"LE Alt Name Start Date",
+    "documentation":"The first date on which an Alternate Name was first in effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"15-Jan-2005"
+  },{
+    "name":"LEAlternateNameImage",
+    "description":"LE Alternate Name Image",
+    "documentation":"A picture or image of a Legal Entity Alternate Name, for cases where the text character set for the Language of the Name is not supported.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"LEAddress",
+    "description":"LE Address",
+    "documentation":"Each occurrence of Legal Entity Address provides one Address for one Legal Entity for a designated period of time.  Each Legal Entity may have any number of Addresses which may be further qualified by the Address Role attribute.  The same Address may be used for any number of Individuals and/or Legal Entities.  The Individual  Address Start and End Date in conjunction with the Cycle Frequency attribute allows an address to be used for a specified period of time and then be repeated on a designated cycle, such as for a summer to be used during the summer months only on a yearly basis.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"Address",
+      "name":"Address ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"AddressRole",
+      "name":"Address Role",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"AddressBlockOverrideType",
+      "name":"Addr(ess) Bl(oc)k Ov(er)r(i)de Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAddressStartDate",
+      "name":"LE Addr(ess) Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEAddressEndDate",
+      "name":"LE Addr(ess) End Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CycleFrequency",
+      "name":"Cycle Frequency",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"AddressStatus",
+      "name":"Address Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEtoLERelationship",
+      "name":"LE to LE Relationship",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"CorporateEvent",
+    "description":"Corporate Event",
+    "documentation":"Each occurrence of Corporate Event identifies and provides summary information regarding one action, event, or activity occuring in the past or scheduled to occur in the future that has significant effect on one Business Legal Entity (e.g., Shareholder Meeting) or on multiple Business Legal Entities (e.g., merger or acquistion) as provided by one Data Source. The full terms, conditions, and detail informaton regarding the Corporate Event itself are not stored in Legal Entity Data Domain but are instead stored separately outside the domain space and are referenced by the Corporate Event ID attribute. The specific one or multiple Business LEs impacted by the Corporate Event are identified by separate occurrences of LE Corporate Event entity.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"DataSource",
+      "name":"Data Source ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"EventType",
+      "name":"Event Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CorporateActionDescription",
+      "name":"Corporate Action Description",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CorporateEventLinkID",
+      "name":"Corporate Event Link ID",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"EventStatus",
+      "name":"Event Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CorporateEventStartDate",
+      "name":"Corporate Event Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"CorporateEventEndDate",
+      "name":"Corporate Event End Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LECorporateEvent",
+      "name":"LE Corporate Event",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"IdentifierCode",
+    "description":"Identifier Code",
+    "documentation":"An abbreviation of a specific Tax Identifer issued by a Taxing Authority.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"EIN"
+  },{
+    "name":"LEinCountry",
+    "description":"LE in Country",
+    "documentation":"Each occurrence of Legal Entry in Country identifies one Country that is related to one Legal Entity. The LE to Country Relationship Type Code indicates the type of relationship.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"Country",
+      "name":"Country ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LEtoCountryRelationshipType",
+      "name":"LE to C(ou)ntry Rel(ationship) Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"StartofCountryRelationshipDate",
+      "name":"Start (of Country) Rel(ationship) Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"EndofCountryRelationshipDate",
+      "name":"End (of Country) Rel(ationship) Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"LEDocument",
+    "description":"LE Document",
+    "documentation":"Each occurrence of LE Document references one piece of written, printed, or electronic matter pertaining to one Legal Entity. The Document may be stored in any number of different file formats (PDF, Word, Text, HTML, etc.) as indicated by the Document File Type attribute. The actual Document contents is provided via the Document Link ID attribute.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"DocumentBriefDescription",
+      "name":"Doc(ument) Brief Desc(ription)",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DocumentDate",
+      "name":"Document Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DocumentAuthor",
+      "name":"Document Author",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DocumentLinkID",
+      "name":"Document Link ID",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DocumentFileType",
+      "name":"Doc(ument) File Type",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"InRegionStartDate",
+    "description":"In Region Start Date",
+    "documentation":"The earliest date this Country was a member of this Region.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"01-Jan-2010"
+  },{
+    "name":"CountryISOCode",
+    "description":"Country ISO Code",
+    "documentation":"The ISO 3166 code that identifies this Country.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"USA"
+  },{
+    "name":"DocumentLinkID",
+    "description":"Document Link ID",
+    "documentation":"The file ID,  URL or similar link to one LE Document.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"HTTP://WWW.CORP.COM/DOC/0515199205"
+  },{
+    "name":"LEBusinessHierarchyCategory",
+    "description":"LE Business Hierarchy Category",
+    "documentation":"Each occurrence of LE Business Hierarchy Category identifies, names, and defines one grouping or strata within a defined LE Business Hierarchy. Each Category represents one member of an ordered set that allows that category to be \"above,\" \"below,\" or \"at the same level\" as another Category member within that same Business Hierarchy.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LEBusinessHierarchy",
+      "name":"LE Business Hierarchy ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"BusinessCategoryName",
+      "name":"Bus(iness) Category Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"HierarchyLevelNumber",
+      "name":"Hier(archy) Level Number",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"BusinessHierarchySequenceNumber",
+      "name":"Bus(iness) Hier(archy) Seq(uence) Number",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"GeoRegionName",
+    "description":"Geo Region Name",
+    "documentation":"The name for this Geographic Region.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"North America"
+  },{
+    "name":"LEBusinessHierarchy",
+    "description":"LE Business Hierarchy",
+    "documentation":"Each occurrence of LE Business Hierarchy identifies, names, and defines one taxonomy or organizational framework that has meaning to one Business Legal Entity. Each Business Legal Entity may establish any number of LE Business Hierarchies but each such hierarchy is defined only for that one Legal Entity. The establishment of LE Business Hierarchies is optional and a Business Legal Entity is not required to define any such structures.\n\nEach LE Business Hierarchy is in turn made up of one or more categories, sub strata, or lower-level grouping defined by occurrences of LE Business Hierarchy Category entity. There is no restriction on the type of information categorized by a Business Hierarchy as indicated by the Business Hierarchy Type attribute. For example, the hierarchy may define a specific geographic breakdown used by the Legal Entity or may provide a product breakdown by product line, etc.\n.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"BusinessHierarchyDescription",
+      "name":"Bus(iness) Hierarchy Description",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"BusinessHierarchyType",
+      "name":"Bus(iness) Hierarchy Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEBusinessHierarchyCategory",
+      "name":"LE Business Hierarchy Category",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"EventType",
+    "description":"Event Type",
+    "documentation":"Indicates the type or category of Corporate Event.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"SHAREHOLDER MEETING"
+  },{
+    "name":"FinancialInfo",
+    "description":"Financial Info",
+    "documentation":"Each occurrence of LE Financial Information provides time sensitive information about the monetary value or condition of a Legal Entity from a named Data Source. The information may consist of quantitative financial results, text information, or a web link to expanded information regarding one topic. The Financial Information Type and Sub Type attributes define the specific type of information provided in that occurrence.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"DataSource",
+      "name":"Data Source ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"FinancialInfoType",
+      "name":"Fin(ancia)l Info Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FinancialInfoSubType",
+      "name":"Fin(ancia)l Info Sub Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FinancialInfoQuantitativeValue",
+      "name":"Fin(ancia)l Info Quant(itative) Value",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FinancialInfoTextValue",
+      "name":"Fin(ancia)l Info Text  Value",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"QuantitativeData/Link",
+      "name":"Quant(itative) Data/Link",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"InfoStatus",
+      "name":"Info Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FinancialInfoStartDate",
+      "name":"Fin(ancia)l Info Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FinancialInfoEndDate",
+      "name":"Fin(ancial) Info End Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"EndofCountryRelationshipDate",
+    "description":"End of Country Relationship Date",
+    "documentation":"The last date this Country was related to the Legal Entity.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"LEIdentifierValue",
+    "description":"LE Identifier Value",
+    "documentation":"The character string  that identifies the Legal Entity as designated by the Identifier Type.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXBICCODE"
+    },{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXCOMPANYID"
+    },{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXFSAREFNUM"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGCDSTICKER"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGCOMPANYID"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGCORPORATETICKER"
+    },{
+      "sourceName":"GICS",
+      "attributeName":"GICSCOMPANYID"
+    },{
+      "sourceName":"ICB",
+      "attributeName":"ICBCOMPANYCODE"
+    },{
+      "sourceName":"MARKIT",
+      "attributeName":"MARKETIDENTIFIERCODE"
+    },{
+      "sourceName":"MARKIT",
+      "attributeName":"MARKITTICKER"
+    },{
+      "sourceName":"MOODY",
+      "attributeName":"MOODYSISSUERID"
+    },{
+      "sourceName":"REUTERS",
+      "attributeName":"REUTERSORGID"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSIBEIID"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSRCSID"
+    }],
+    "sampleValue":"GSIBKRSE"
+  },{
+    "name":"EmailAddress",
+    "description":"Email Address",
+    "documentation":"The email address associated with this Address ID",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"LegalEntityBusiness",
+    "description":"Legal Entity - Business",
+    "documentation":"Each occurrence of Legal Entity - Business provides reference information specific to a corporation, partnership, proprietorship, trust, fund, or similar organization that has legal standing in the eyes of the law. ",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"OfficialBusinessName",
+      "name":"Official Business Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"BusinessType",
+      "name":"Business Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalForm",
+      "name":"Legal Form",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country of Incorp oration ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"StateofIncorporation",
+      "name":"State of Incorporation",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country of Risk ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"RegistrationDate",
+      "name":"Registration Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RegistrationNumber",
+      "name":"Registration Number",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FormationDate",
+      "name":"Formation Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DissolutionDate",
+      "name":"Dissolution Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FiscalYearEnd",
+      "name":"Fiscal Year End",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Restrictions",
+      "name":"Restrictions",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PrimaryExchangeCode",
+      "name":"Primary Exchange Code",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PrimaryListingSymbol",
+      "name":"Primary Listing Symbol",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"TradingStatus",
+      "name":"Trading Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"ListingStatus",
+      "name":"Listing Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RegistrationStatus",
+      "name":"Registration Status",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntityIndicator",
+      "name":"Legal Entity Indicator",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"SovereignOwnershipIndicator",
+      "name":"Sovereign Ownership Ind(icator)",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"TaxorRegIdentifier",
+    "description":"Tax or Reg Identifier",
+    "documentation":"Each occurrence of LE Tax Identifier provides one Tax or one Regulatory Identifier that has been assigned to one LE by one Tax Authority. Each Legal Entity may have 'N\" number of Tax Identifiers.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"TaxIdentifierValue",
+      "name":"Tax Identifier Value",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"TaxIDStartDate",
+      "name":"Tax ID Start Date",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"TaxIDEndDate",
+      "name":"Tax ID End Date",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"FinancialInfoSubType",
+    "description":"Financial Info Sub Type",
+    "documentation":"A free-form code that provides a lower-level breakdown of Financial Information regarding a Legal Entity.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"SHAREHOLDER EQUITY"
+  },{
+    "name":"InRegionEndDate",
+    "description":"In Region End Date",
+    "documentation":"The last date this Country was a member of this Region.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"PrimaryTaxID",
+    "description":"Primary Tax  ID",
+    "documentation":"The ID of the Tax Identifier for primary identifying number for this LE for tax reporting and other legal purposes. When multiple tax identification numbers are required for the same LE, each Tax ID is also stored as a separate occurrence of Tax Identifier Entity.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"2.01115555E8"
+  },{
+    "name":"FaxNumber",
+    "description":"Fax Number",
+    "documentation":"A phone number used for faxing purposes.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"ZIP/PostalCode",
+    "description":"ZIP/Postal Code",
+    "documentation":"Free form text  with well defined format and domain of values for different countries",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"100069.0"
+  },{
+    "name":"PrimaryCurrency",
+    "description":"Primary Currency",
+    "documentation":"The ISO Currency Code for the Primary Currency in which the LE trades and/or transacts.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"USD"
+  },{
+    "name":"GivenName",
+    "description":"Given Name",
+    "documentation":"The Given first name for this Individual.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"Robert"
+  },{
+    "name":"PostalAddressLine2",
+    "description":"Postal Address - Line 2",
+    "documentation":"A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE2"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE2"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE2"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"BusinessHierarchyDescription",
+    "description":"Business Hierarchy Description",
+    "documentation":"A full text explanation of this Business Hierarchy.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"GICS"
+  },{
+    "name":"MembershipStartDate",
+    "description":"Membership Start Date",
+    "documentation":"The earliest or beginning of period date in which a LE was first a member of a LE Group.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"15-Feb-2012"
+  },{
+    "name":"EventSequenceNumber",
+    "description":"Event Sequence Number",
+    "documentation":"When the same Corporate Event impacts more then one Legal Entity e.g., merger, split-up, etc., this number allows the individual LE's to be ordered into a designated sequence within that Event.",
+    "nodeType":{
+      "dataType":"Number"
+    },
+    "relationships":[],
+    "sampleValue":"1.0"
+  },{
+    "name":"PostalAddressLine3",
+    "description":"Postal Address - Line 3",
+    "documentation":"A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE3"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE3"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE3"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"CycleFrequency",
+    "description":"Cycle Frequency",
+    "documentation":"A code that can be used to recycle a Legal Entity Address on a recurring cycle. E.g., YEARLY for recurring Summer Address.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"TaxorRegulatoryAuthority",
+    "description":"Tax or Regulatory Authority",
+    "documentation":"Each occurrence of Tax/Regulatory Authority identifies and names one Tax Authority or one Regulatory Agency within one Country (e.g. US) or within one Region (eg., EU) and designates one type of Tax or Regulatory Identifier issued by that authority.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"Country",
+      "name":"Country ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"GeoRegion",
+      "name":"Region ",
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"AuthorityType",
+      "name":"Authority Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"AuthorityName",
+      "name":"Authority Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"IdentifierName",
+      "name":"Identifier Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"IdentifierCode",
+      "name":"Identifier Code",
+      "cardinality":"HasOne"
+    }]
+  },{
+    "name":"ClassificationSequenceNumber",
+    "description":"Classification Sequence Number",
+    "documentation":"A number that allows the Category members of a Classification Set to be arranged in a defined order.",
+    "nodeType":{
+      "dataType":"Number"
+    },
+    "relationships":[],
+    "sampleValue":"3.0"
+  },{
+    "name":"RatingOutlookValue",
+    "description":"Rating Outlook Value",
+    "documentation":"The value of the Outlook Status as provided by the Data Source",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"MOODY??",
+      "attributeName":"RATING OUTLOOK"
+    }],
+    "sampleValue":"\"--\""
+  },{
+    "name":"MiddleName",
+    "description":"Middle Name",
+    "documentation":"The Middle name for this Individual.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":"T"
+  },{
+    "name":"RegistrationDate",
+    "description":"Registration Date",
+    "documentation":"The initial Date of Registration",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"07/15/1869"
+  },{
+    "name":"PostalAddressLine5",
+    "description":"Postal Address - Line 5",
+    "documentation":"Supplemental Address Line.",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXADDRESSLINE5"
+    },{
+      "sourceName":"BLOOMBERG",
+      "attributeName":"BLOOMBERGADDRESSLINE5"
+    },{
+      "sourceName":"TELEKURS",
+      "attributeName":"TELEKURSADDRESSLINE5"
+    }],
+    "sampleValue":"<BLANK>"
+  },{
+    "name":"RegistrationStatus",
+    "description":"Registration Status",
+    "documentation":"Status of the entity with is registration authority.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":""
+  },{
+    "name":"InfoStatus",
+    "description":"Info Status",
+    "documentation":"The state of status of Financial Information regarding a Legal Entity.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"ACTIVE"
+  },{
+    "name":"TradingStatus",
+    "description":"Trading Status",
+    "documentation":"A code that indicates if a Legal Entity is tradable on any organized exchange.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sourceReferences":[{
+      "sourceName":"AVOX",
+      "attributeName":"AVOXTRADINGSTATUS"
+    }],
+    "sampleValue":"TRADABLE"
+  },{
+    "name":"BusinessType",
+    "description":"Business Type",
+    "documentation":"The specific type of Business Legal Entity.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"STANDARD"
+  },{
+    "name":"LEAltNameEndDate",
+    "description":"LE Alt Name End Date",
+    "documentation":"The last date on which an Alternate Name is in effect.",
+    "nodeType":{
+      "dataType":"Date"
+    },
+    "relationships":[],
+    "sampleValue":"\"--\""
+  },{
+    "name":"GeoRegionType",
+    "description":"Geo Region Type",
+    "documentation":"An abbreviation or term that indicates the type or purpose of The Region.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"GEO AREA"
+  },{
+    "name":"State/Province/Canton",
+    "description":"State/Province/Canton",
+    "documentation":"Domain of values well defined e.g. US State Codes, Canada Province Codes, etc.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"New York"
+  },{
+    "name":"DocumentFileType",
+    "description":"Document File Type",
+    "documentation":"A code that indicates the file or technical format in which the Document is stored.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"PDF"
+  },{
+    "name":"LanguageofNameCode",
+    "description":"Language of Name Code",
+    "documentation":"A code indicating the character set of the language used for an Alternate Legal Entity Name.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"ENGLISH"
+  },{
+    "name":"LEGroup",
+    "description":"LE Group",
+    "documentation":"Each occurrence of LE Group defines one group or collection consisting of one or more Legal Entities. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityGroupName",
+      "name":"L(egal) E(ntity) Group Name",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntityGroupType",
+      "name":"L(egal) E(ntity) Group Type",
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LEGroupMember",
+      "name":"LE Group Member",
+      "cardinality":"HasMany"
+    }]
+  },{
+    "name":"RegionSpan",
+    "description":"Region Span",
+    "documentation":"Desigates if this Region is: \n    \"WITHIN\" one Cournty \n    \"ACROSS\" multiple Countries",
+    "nodeType":{
+      "dataType":"String"
+    },
+    "relationships":[],
+    "sampleValue":""
+  }]
+}

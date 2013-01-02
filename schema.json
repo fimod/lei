@@ -210,6 +210,11 @@
       "render":true,
       "cardinality":"HasMany"
     },{
+      "targetNodeName":"LegalEntityBusiness",
+      "name":"Legal Entity - Business",
+      "render":true,
+      "cardinality":"HasMany"
+    },{
       "targetNodeName":"LEtoLERelationship",
       "name":"LE to LE Relationship",
       "render":true,
@@ -247,11 +252,6 @@
     },{
       "targetNodeName":"LEGroupMember",
       "name":"LE Group Member",
-      "render":true,
-      "cardinality":"HasMany"
-    },{
-      "targetNodeName":"LegalEntityBusiness",
-      "name":"Legal Entity - Business",
       "render":true,
       "cardinality":"HasMany"
     },{
@@ -770,15 +770,6 @@
       "cardinality":"BelongsTo"
     }]
   },{
-    "name":"PrimaryExchangeCode",
-    "description":"Primary Exchange Code",
-    "documentation":"Code that identifies the exchange on which the LE is listed.",
-    "nodeType":{
-      "dataType":"Enumeration"
-    },
-    "relationships":[],
-    "sampleValue":"NYSE"
-  },{
     "name":"AddressBlockType",
     "description":"Address Block Type",
     "documentation":"For POSTAL ADDRESS, Indicates the sequence and structure for assembling the components into a Formatted Address Block. Default is \"USPS.\"",
@@ -787,6 +778,15 @@
     },
     "relationships":[],
     "sampleValue":"USPS"
+  },{
+    "name":"PrimaryExchangeCode",
+    "description":"Primary Exchange Code",
+    "documentation":"Code that identifies the exchange on which the LE is listed.",
+    "nodeType":{
+      "dataType":"Enumeration"
+    },
+    "relationships":[],
+    "sampleValue":"NYSE"
   },{
     "name":"LegalEntityType",
     "description":"Legal Entity Type",
@@ -905,6 +905,11 @@
     },{
       "targetNodeName":"LEIdentifier",
       "name":"LE Identifier",
+      "render":true,
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LegalEntityBusiness",
+      "name":"Legal Entity - Business",
       "render":true,
       "cardinality":"HasMany"
     },{
@@ -1125,6 +1130,11 @@
     },{
       "targetNodeName":"LEBusinessHierarchyCategory",
       "name":"LE Business Hierarchy Category",
+      "render":true,
+      "cardinality":"HasMany"
+    },{
+      "targetNodeName":"LegalEntityBusiness",
+      "name":"Legal Entity - Business",
       "render":true,
       "cardinality":"HasMany"
     }]
@@ -1691,6 +1701,129 @@
     },
     "relationships":[],
     "sampleValue":"12.0"
+  },{
+    "name":"LegalEntityBusiness",
+    "description":"Legal Entity - Business",
+    "documentation":"Each occurrence of Legal Entity - Business provides reference information specific to a corporation, partnership, proprietorship, trust, fund, or similar organization that has legal standing in the eyes of the law. ",
+    "nodeType":{
+      "dataType":"DataGroup"
+    },
+    "relationships":[{
+      "targetNodeName":"LegalEntityCommon",
+      "name":"Legal Entity ",
+      "render":true,
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"LEBusinessHierarchy",
+      "name":"LE Business Hierarchy ",
+      "render":true,
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"OfficialBusinessName",
+      "name":"Official Business Name",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"BusinessType",
+      "name":"Business Type",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalForm",
+      "name":"Legal Form",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country of Incorp oration ",
+      "render":true,
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"StateofIncorporation",
+      "name":"State of Incorporation",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Country",
+      "name":"Country of Risk ",
+      "render":true,
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"RegistrationDate",
+      "name":"Registration Date",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RegistrationNumber",
+      "name":"Registration Number",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"TaxorRegulatoryAuthority",
+      "name":"Tax or Regulatory Authority ",
+      "render":true,
+      "cardinality":"BelongsTo"
+    },{
+      "targetNodeName":"FormationDate",
+      "name":"Formation Date",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"DissolutionDate",
+      "name":"Dissolution Date",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"FiscalYearEnd",
+      "name":"Fiscal Year End",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"Restrictions",
+      "name":"Restrictions",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PrimaryExchangeCode",
+      "name":"Primary Exchange Code",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"PrimaryListingSymbol",
+      "name":"Primary Listing Symbol",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"TradingStatus",
+      "name":"Trading Status",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"ListingStatus",
+      "name":"Listing Status",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"RegistrationStatus",
+      "name":"Registration Status",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"LegalEntityIndicator",
+      "name":"Legal Entity Indicator",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"SovereignOwnershipIndicator",
+      "name":"Sovereign Ownership Ind(icator)",
+      "render":true,
+      "cardinality":"HasOne"
+    },{
+      "targetNodeName":"User",
+      "name":"Last Changed User ID",
+      "render":false,
+      "cardinality":"BelongsTo"
+    }]
   },{
     "name":"FinancialInfoEndDate",
     "description":"Financial Info End Date",
@@ -2421,119 +2554,6 @@
     "relationships":[],
     "sampleValue":"Robert"
   },{
-    "name":"LegalEntityBusiness",
-    "description":"Legal Entity - Business",
-    "documentation":"Each occurrence of Legal Entity - Business provides reference information specific to a corporation, partnership, proprietorship, trust, fund, or similar organization that has legal standing in the eyes of the law. ",
-    "nodeType":{
-      "dataType":"DataGroup"
-    },
-    "relationships":[{
-      "targetNodeName":"OfficialBusinessName",
-      "name":"Official Business Name",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"BusinessType",
-      "name":"Business Type",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"LegalForm",
-      "name":"Legal Form",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"Country",
-      "name":"Country of Incorp oration ",
-      "render":true,
-      "cardinality":"BelongsTo"
-    },{
-      "targetNodeName":"StateofIncorporation",
-      "name":"State of Incorporation",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"Country",
-      "name":"Country of Risk ",
-      "render":true,
-      "cardinality":"BelongsTo"
-    },{
-      "targetNodeName":"RegistrationDate",
-      "name":"Registration Date",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"RegistrationNumber",
-      "name":"Registration Number",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"TaxorRegulatoryAuthority",
-      "name":"Tax or Regulatory Authority ",
-      "render":true,
-      "cardinality":"BelongsTo"
-    },{
-      "targetNodeName":"FormationDate",
-      "name":"Formation Date",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"DissolutionDate",
-      "name":"Dissolution Date",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"FiscalYearEnd",
-      "name":"Fiscal Year End",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"Restrictions",
-      "name":"Restrictions",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"PrimaryExchangeCode",
-      "name":"Primary Exchange Code",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"PrimaryListingSymbol",
-      "name":"Primary Listing Symbol",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"TradingStatus",
-      "name":"Trading Status",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"ListingStatus",
-      "name":"Listing Status",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"RegistrationStatus",
-      "name":"Registration Status",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"LegalEntityIndicator",
-      "name":"Legal Entity Indicator",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"SovereignOwnershipIndicator",
-      "name":"Sovereign Ownership Ind(icator)",
-      "render":true,
-      "cardinality":"HasOne"
-    },{
-      "targetNodeName":"User",
-      "name":"Last Changed User ID",
-      "render":false,
-      "cardinality":"BelongsTo"
-    }]
-  },{
     "name":"BusinessHierarchyDescription",
     "description":"Business Hierarchy Description",
     "documentation":"A full text explanation of this Business Hierarchy.",
@@ -2612,13 +2632,13 @@
       "render":false,
       "cardinality":"BelongsTo"
     },{
-      "targetNodeName":"LegalEntityIndividual",
-      "name":"Legal Entity - Individual",
+      "targetNodeName":"LegalEntityBusiness",
+      "name":"Legal Entity - Business",
       "render":true,
       "cardinality":"HasMany"
     },{
-      "targetNodeName":"LegalEntityBusiness",
-      "name":"Legal Entity - Business",
+      "targetNodeName":"LegalEntityIndividual",
+      "name":"Legal Entity - Individual",
       "render":true,
       "cardinality":"HasMany"
     },{

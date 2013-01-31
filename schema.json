@@ -1,1095 +1,1599 @@
 {
-  "atlasVersion":"1.1.0",
-  "namespace":"org.fimod.lei",
-  "name":"LegalEntityIdentifier",
-  "documentation":"An association, corporation, partnership, proprietorship, trust, or individual that has legal standing in the eyes of the law. A legal entity has legal capacity to enter into agreements or contracts, assume obligations, incur and pay debts, sue and be sued in its own right, and to be held responsible for its actions.",
-  "version":"1.4.0",
-  "organization":{
-    "name":"fimod",
-    "webSiteUrl":"http://fimod.org",
-    "logoUrl":"classpath:/fimod-logo.png"
-  },
-  "contributors":[{
-    "name":"Predrag Dizdarevic"
-  },{
-    "name":"Tom Charlton"
-  },{
-    "name":"John Carroll"
-  },{
-    "name":"Garry Wright"
-  },{
-    "name":"Ken Price"
-  },{
-    "name":"Niel Siekerka"
-  },{
-    "name":"Philip Dodds"
-  },{
-    "name":"Roger Newman"
-  }],
-  "license":{
-    "name":"Apache Software License v2.0",
-    "description":"Apache Software License",
-    "copyrightNotice":"(C) Copyright 2012 FiMod (http://fimod.org)",
-    "webUrl":"http://www.apache.org/licenses/LICENSE-2.0.html"
-  },
-  "revisionControlSystem":{
-    "system":"github",
-    "webUrl":"https://github.com/fimod/lei"
-  },
-  "issueTracker":{
-    "system":"github",
-    "webUrl":"https://github.com/fimod/lei/issues"
-  },
-  "nodes":[{
-    "name":"ClassificationSetName",
-    "description":"Classification Set Name",
-    "documentation":"The Name or standard abbreviation for this Classification Set.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Global Industry Classification Standard"
-  },{
-    "name":"CountryofDomicile",
-    "description":"Country of Domicile",
-    "documentation":"The Country in which this Legal Entity was originally established.",
-    "relationships":["Country"]
-  },{
-    "name":"CountryofIncorporation",
-    "description":"Country of Domicile",
-    "documentation":"The Country in which the LE files its registration.",
-    "relationships":["Country"]
-  },{
-    "name":"CountryofRisk",
-    "description":"Country of Risk",
-    "documentation":"The Country that exposes the LE to the most serious financial risk, as contrasted to the Country in which the LE was originally located or founded.",
-    "relationships":["Country"]
-  },{
-    "name":"EventStatus",
-    "description":"Event Status",
-    "documentation":"The state or status of this Corporate Event.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"PENDING"
-  },{
-    "name":"LEtoCountryRelationshipType",
-    "description":"LE to Country Relationship Type",
-    "documentation":"Indicates how this Country is related to the Legal Entity.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"COUNTRY OF INCORPORATION"
-  },{
-    "name":"FinancialInfoEndDate",
-    "description":"Financial Info End Date",
-    "documentation":"The latest or end of period date this Financial Info had effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":""
-  },{
-    "name":"PhoneNumber",
-    "description":"Phone Number",
-    "documentation":"The phone number associated with this Address ID",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"LEAddressEndDate",
-    "description":"LE Address End Date",
-    "documentation":"A Date after which a Legal Entity Address is no longer active.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"ZIPPostalCode",
-    "description":"ZIP/Postal Code",
-    "documentation":"Free form text  with well defined format and domain of values for different countries",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"100069.0"
-  },{
-    "name":"LegalEntityName",
-    "description":"Legal Entity Name",
-    "documentation":"The legal, official name for this LE expressed in English. Additional names for the Legal Entity, if required, are stored on separate occurrences of Legal Entity Alternate Name including the Legal Entity Name expressed in its native language.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Goldman Sachs Group, Inc."
-  },{
-    "name":"HierarchyLevelNumber",
-    "description":"Hierarchy Level Number",
-    "documentation":"Indicates the strata in which this Category is ranked. The top-most strata is \"1\", the second level is \"2\", etc. All Categories within the same strata will have the same Level Number.",
-    "extend":"io.dataset.atlas.types.Number",
-    "sampleValue":"2.0"
-  },{
-    "name":"LEIdentifierValue",
-    "description":"LE Identifier Value",
-    "documentation":"The character string  that identifies the Legal Entity as designated by the Identifier Type.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"GSIBKRSE"
-  },{
-    "name":"LegalEntityType",
-    "description":"Legal Entity Type",
-    "documentation":"A code that distinguishes one type of Legal Entity from another. Each separate Legal Entity Type has different data attribute and/or data relationship requirements.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"BUSINESS"
-  },{
-    "name":"OtherCountryInformationTBD",
-    "description":"Other Country Information - TBD",
-    "documentation":"T.B.D.",
-    "sampleValue":"To be determined."
-  },{
-    "name":"LEAddress",
-    "description":"LE Address",
-    "documentation":"Each occurrence of Legal Entity Address provides one Address for one Legal Entity for a designated period of time.  Each Legal Entity may have any number of Addresses which may be further qualified by the Address Role attribute.  The same Address may be used for any number of Individuals and/or Legal Entities.  The Individual  Address Start and End Date in conjunction with the Cycle Frequency attribute allows an address to be used for a specified period of time and then be repeated on a designated cycle, such as for a summer to be used during the summer months only on a yearly basis.",
-    "relationships":["LegalEntityCommon","Address","AddressRole","AddressBlockOverrideType","LEAddressStartDate","LEAddressEndDate","CycleFrequency","AddressStatus","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"IdentifierStatus",
-    "description":"Identifier Status",
-    "documentation":"Indicates the state of the LE Identifier at the Source 2",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"ACTIVE"
-  },{
-    "name":"IDStartDate",
-    "description":"ID Start Date",
-    "documentation":"The earliest date that a LE Identifier was in effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"28-Jan-2012"
-  },{
-    "name":"GeoRegion",
-    "description":"Geo Region",
-    "documentation":"Each occurrence of Geographic Region names and identifies one geographic area. The Geographic Area  may be within a single country or may extend across multiple countries as indicated by the Region Span attribute. Each Geographic Area  in turn has one of more Tax or Regulatory Authorities that oversee Legal Entities.",
-    "relationships":["GeoRegionName","GeoRegionType","RegionSpan","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"RatingName",
-    "description":"Rating Name",
-    "documentation":"The name of the specific rating.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Moody's Corporate Bond Rating"
-  },{
-    "name":"FinancialInfoSubType",
-    "description":"Financial Info Sub Type",
-    "documentation":"A free-form code that provides a lower-level breakdown of Financial Information regarding a Legal Entity.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"SHAREHOLDER EQUITY"
-  },{
-    "name":"LEtoLERelationship",
-    "description":"LE to LE Relationship",
-    "documentation":"Each occurrence of LE to LE Relationship defines a pair of two Legal Entities that are related to each other.",
-    "relationships":["LERelationshipType","RelationshipRole","ParentLegalEntityCommon","ChildLegalEntityCommon","OwnershipPercentage","LEAddress","RelationshipStartDate","RelationshipEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier","DateTimeLastReviewed","Reviewer"]
-  },{
-    "name":"ParentLegalEntityCommon",
-    "description":"A parent Legal Entity",
-    "documentation":"The Legal Entity that acts as the Parent or Primary in this Relationship.",
-    "relationships":["LegalEntityCommon"]
-  },{
-    "name":"ChildLegalEntityCommon",
-    "description":"A child Legal Entity",
-    "documentation":"The Legal Entity that acts as the Child or Secondary in this Relationship.",
-    "relationships":["LegalEntityCommon"]
-  },{
-    "name":"Reviewer",
-    "description":"Reviewer User Id",
-    "documentation":"The User who last reviewed this.",
-    "relationships":["User"]
-  },{
-    "name":"LastModifier",
-    "description":"Last Changed User Id",
-    "documentation":"The User who last changed data on this Entity.",
-    "relationships":["User"]
-  },{
-    "name":"LECorporateEvent",
-    "description":"LE Corporate Event",
-    "documentation":"Each occurrence of LE Corporate Event defines one Business Legal Entity effected by one Corporate Event. Each Corporate Event may impact one or multiple Business Legal Entities (e.g., merger, acquistion, etc.). If the Corporate Event impacts \"n\" number of LE's, then there will be \"n\" occurrence of LE Corporate Event, one for each Business LE impacted by the event.  ",
-    "relationships":["CorporateEvent","LegalEntityCommon","EventSequenceNumber","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"DocumentLinkID",
-    "description":"Document Link ID",
-    "documentation":"The file ID,  URL or similar link to one LE Document.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"HTTP://WWW.CORP.COM/DOC/0515199205"
-  },{
-    "name":"IndividualFullName",
-    "description":"Individual Full Name",
-    "documentation":"The full name of this individual",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Robert Rubin"
-  },{
-    "name":"MiddleName",
-    "description":"Middle Name",
-    "documentation":"The Middle name for this Individual.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"T"
-  },{
-    "name":"AddressBlockType",
-    "description":"Address Block Type",
-    "documentation":"For POSTAL ADDRESS, Indicates the sequence and structure for assembling the components into a Formatted Address Block. Default is \"USPS.\"",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"USPS"
-  },{
-    "name":"BusinessHierarchySequenceNumber",
-    "description":"Business Hierarchy Sequence Number",
-    "documentation":"A number that indicates the Category's \"rank\" within the Business Hierarchy. Allows the Category members of a Business Hierarchy to be arranged in a defined order.",
-    "extend":"io.dataset.atlas.types.Number",
-    "sampleValue":"7.0"
-  },{
-    "name":"RelationshipStartDate",
-    "description":"Relationship Start Date",
-    "documentation":"The earliest date that a Legal Entity Relationship was in effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"01-Jan-1955"
-  },{
-    "name":"PostalAddressLine3",
-    "description":"Postal Address - Line 3",
-    "documentation":"A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"LEClassificationCategory",
-    "description":"LE Classification Category",
-    "documentation":"Each occurrence of Classification Category identifies one Legal Entity that has been categorized in a Category Grouping within a Classification Set.",
-    "relationships":["LegalEntityCommon","ClassificationCategory","InCategoryStartDate","InCategoryEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"PostalAddressLine8",
-    "description":"Postal Address - Line 8",
-    "documentation":"Supplemental Address Line.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"CorporateEventLinkID",
-    "description":"Corporate Event Link ID",
-    "documentation":"The file ID,  URL or similar link to the details of a specific Corporate Action Event. The details regarding the terms and conditions of the Corporate Action are stored outside the Legal Entity Data Domain but may be referenced by this ID Key or URL.",
-    "sampleValue":"SH06152012"
-  },{
-    "name":"PostalAddressLine5",
-    "description":"Postal Address - Line 5",
-    "documentation":"Supplemental Address Line.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"Locality",
-    "description":"Locality",
-    "documentation":"Free form text but typically the city or geographic locale ",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Wall Street"
-  },{
-    "name":"UserEmail",
-    "description":"User Email",
-    "documentation":"A contact email adress for this person or entity",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"BUSINESS"
-  },{
-    "name":"RegistrationStatus",
-    "description":"Registration Status",
-    "documentation":"Status of the entity with is registration authority.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":""
-  },{
-    "name":"CountryISOCode",
-    "description":"Country ISO Code",
-    "documentation":"The ISO 3166 code that identifies this Country.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"USA"
-  },{
-    "name":"RegistrationNumber",
-    "description":"Registration Number",
-    "documentation":"The Primary Registration Number for this Legal Entity. If registered in multiple locations, then additional Registration Numbers each stored as occurrence of Tax/Regulatory Identifier.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"NYS-0567852"
-  },{
-    "name":"LERelationshipTypeName",
-    "description":"LE Relationship Type Name",
-    "documentation":"Free form text describing a well-defined Entity to Entity Relationship Type.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"ULTIMATE PARENT"
-  },{
-    "name":"TaxIdentifierValue",
-    "description":"Tax Identifier Value",
-    "documentation":"The value of the Tax Identifier for a LE.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"2.01149555E8"
-  },{
-    "name":"LegalEntityIndividual",
-    "description":"Legal Entity - Individual",
-    "documentation":"Each occurrence of Legal Entity - Individual identifies, names and supplies indicative information regarding one Natural Person. Each Individual is a human being as contrasted to a Legal Person, such as a Corporation having legal standing.",
-    "relationships":["LegalEntityCommon","IndividualFullName","GivenName","MiddleName","FamilyName","Title","Salutation","IndividualPrivacyCode","BirthDate","IndividualTaxID","TaxorRegulatoryAuthority","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"QuantitativeDataLink",
-    "description":"Quantitative Data/Link",
-    "documentation":"The URL or similar link to the specific Quantitative Data for this LE.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"BirthDate",
-    "description":"Birth Date",
-    "documentation":"The date of birth of an Individual.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"09-Jul-1945"
-  },{
-    "name":"ClassificationSetAbbreviation",
-    "description":"Classification Set Abbreviation",
-    "documentation":"A short name or abbreviation for this Classification Set 2.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"GICS"
-  },{
-    "name":"GeoRegionType",
-    "description":"Geo Region Type",
-    "documentation":"An abbreviation or term that indicates the type or purpose of The Region.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"GEO AREA"
-  },{
-    "name":"BusinessCategoryName",
-    "description":"Business Category Name",
-    "documentation":"The Name for this Category within this Business Hierachy.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"North East Division"
-  },{
-    "name":"OwnershipPercentage",
-    "description":"Ownership Percentage",
-    "documentation":"The percent of ownership of a Secondary Legal Entity held by the Parent or Primary Legal Entity ",
-    "extend":"io.dataset.atlas.types.Number",
-    "sampleValue":"0.6525"
-  },{
-    "name":"LEBusinessHierarchy",
-    "description":"LE Business Hierarchy",
-    "documentation":"NA",
-    "relationships":["BusinessHierarchyName","BusinessHierarchyDescription","BusinessHierarchyType","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"CorporateEvent",
-    "description":"Corporate Event",
-    "documentation":"Each occurrence of Corporate Event identifies and provides summary information regarding one action, event, or activity occuring in the past or scheduled to occur in the future that has significant effect on one Business Legal Entity (e.g., Shareholder Meeting) or on multiple Business Legal Entities (e.g., merger or acquistion) as provided by one Data Source. The full terms, conditions, and detail informaton regarding the Corporate Event itself are not stored in Legal Entity Data Domain but are instead stored separately outside the domain space and are referenced by the Corporate Event ID attribute. The specific one or multiple Business LEs impacted by the Corporate Event are identified by separate occurrences of LE Corporate Event entity.",
-    "relationships":["DataSource","DataSourceEvent","EventType","CorporateActionDescription","CorporateEventLinkID","EventStatus","CorporateEventStartDate","CorporateEventEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"ClassificationSequenceNumber",
-    "description":"Classification Sequence Number",
-    "documentation":"A number that allows the Category members of a Classification Set to be arranged in a defined order.",
-    "extend":"io.dataset.atlas.types.Number",
-    "sampleValue":"3.0"
-  },{
-    "name":"BusinessHierarchyType",
-    "description":"Business Hierarchy Type",
-    "documentation":"Describes the type or genre of this Business Hierarchy.",
-    "sampleValue":"ORGANIZATION"
-  },{
-    "name":"Salutation",
-    "description":"Salutation",
-    "documentation":"The desired opening salutation when addressing or meeting an Individual.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Bob"
-  },{
-    "name":"GeoRegionName",
-    "description":"Geo Region Name",
-    "documentation":"The name for this Geographic Region.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"North America"
-  },{
-    "name":"LEAlternateName",
-    "description":"LE Alternate Name",
-    "documentation":"Each occurrence of LE Alternate Name provides an additional name or alias in a designated language provided by a Data Source by which a Legal Entity is known.  Every LE has one Legal Entity Name attribute that is stored on the Legal Entity and may have \"n\" number of additional alternate names."
-  },{
-    "name":"LegalEntityGroupName",
-    "description":"Legal Entity Group Name",
-    "documentation":"A descriptive name for a LE Group.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Large Financial Services Firms"
-  },{
-    "name":"AuthorityName",
-    "description":"Authority Name",
-    "documentation":"The name of the Tax or Regulatory Authority.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Internal Revenue Service"
-  },{
-    "name":"LEinCountry",
-    "description":"LE in Country",
-    "documentation":"Each occurrence of Legal Entry in Country identifies one Country that is related to one Legal Entity. The LE to Country Relationship Type Code indicates the type of relationship.",
-    "relationships":["Country","LegalEntityCommon","LEtoCountryRelationshipType","StartofCountryRelationshipDate","EndofCountryRelationshipDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"LEIdentifier",
-    "description":"LE Identifier",
-    "documentation":"Each occurrence of LE Identifier contains one number, series of alphanumeric characters, or similar unique code provided by a Data Source that is used to identify one Legal Entity.  There may be multiple different LE Identifiers for each Legal Entity. Each different LE Identifier has a LE Identifier Type attribute that specifies the organization or body that establishes, assigns, and maintains that particular Identifier type.",
-    "relationships":["LegalEntityCommon","LEIdentifierType","DataSource","LEIdentifierValue","AlternateNameAtSource","IDStartDate","IDEndDate","IdentifierStatus","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"AlternateNameAtSource",
-    "description":"Alternate Name at Source",
-    "documentation":"Alternate name by which this LE is known at the LE Identifier Source. <BLANK> if not applicable.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"RegistrationDate",
-    "description":"Registration Date",
-    "documentation":"The initial Date of Registration",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"07/15/1869"
-  },{
-    "name":"RatingStatus",
-    "description":"Rating Status",
-    "documentation":"The state of status of Rating score.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"ACTIVE"
-  },{
-    "name":"EventType",
-    "description":"Event Type",
-    "documentation":"Indicates the type or category of Corporate Event.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"SHAREHOLDER MEETING"
-  },{
-    "name":"LegalEntityBusiness",
-    "description":"Legal Entity - Business",
-    "documentation":"Each occurrence of Legal Entity - Business provides reference information specific to a corporation, partnership, proprietorship, trust, fund, or similar organization that has legal standing in the eyes of the law. ",
-    "relationships":["LegalEntityCommon","LEBusinessHierarchy","OfficialBusinessName","BusinessType","LegalForm","CountryofIncorporation","StateofIncorporation","CountryofRisk","RegistrationDate","RegistrationNumber","TaxorRegulatoryAuthority","FormationDate","DissolutionDate","FiscalYearEnd","Restrictions","PrimaryExchangeCode","PrimaryListingSymbol","TradingStatus","ListingStatus","RegistrationStatus","LegalEntityIndicator","SovereignOwnershipIndicator","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"PrimaryListingSymbol",
-    "description":"Primary Listing Symbol",
-    "documentation":"The listing symbol for the common stock of the entity on its primary exchange listing. ",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":""
-  },{
-    "name":"LEAddressStartDate",
-    "description":"LE Address Start Date",
-    "documentation":"A Date on which a Legal Entity Address became active.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"01-Jan-2010"
-  },{
-    "name":"RelationshipRole",
-    "description":"Relationship Role",
-    "documentation":"A code that explains how two LE's are related to each other.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"ULTIMATE PARENT"
-  },{
-    "name":"TaxIDEndDate",
-    "description":"Tax ID End Date",
-    "documentation":"The last date this Tax ID was assigned to this LE.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"\"--\""
-  },{
-    "name":"DependentorSubLocality",
-    "description":"Dependent or Sub-Locality",
-    "documentation":"Free form text– in the US municipality",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"New York City"
-  },{
-    "name":"CorporateActionDescription",
-    "description":"Corporate Action Description",
-    "documentation":"A short description of the Corporate Action Event.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Annual Shareholder Meeting."
-  },{
-    "name":"LegalEntityGroupType",
-    "description":"Legal Entity Group Type",
-    "documentation":"The ID of Data Source that provides this Financial Information.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"LE ONLY"
-  },{
-    "name":"ClassificationCategoryCode",
-    "description":"Classification Category Code",
-    "documentation":"A standard abbreviation for this Classification within this Classfication Set.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"AUTO"
-  },{
-    "name":"PostalAddressLine4",
-    "description":"Postal Address - Line 4",
-    "documentation":"A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"PrimaryTaxID",
-    "description":"Primary Tax  ID",
-    "documentation":"The ID of the Tax Identifier for primary identifying number for this LE for tax reporting and other legal purposes. When multiple tax identification numbers are required for the same LE, each Tax ID is also stored as a separate occurrence of Tax Identifier Entity.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"2.01115555E8"
-  },{
-    "name":"RatingValue",
-    "description":"Rating Value",
-    "documentation":"A measure of the financial worthiness of a LE usually expressed as a letter and/or numeric score.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Aaa"
-  },{
-    "name":"Title",
-    "description":"Title",
-    "documentation":"The prefix title to formally address an Individual.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Mr."
-  },{
-    "name":"DataSourceLEKeyID",
-    "description":"Data Source LE Key ID",
-    "documentation":"The ID of the Legal Entity represented by this Data Source. Provides additional information regarding a Data Source.",
-    "sampleValue":"1000525.0"
-  },{
-    "name":"InfoStatus",
-    "description":"Info Status",
-    "documentation":"The state of status of Financial Information regarding a Legal Entity.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"ACTIVE"
-  },{
-    "name":"LEGroupMember",
-    "description":"LE Group Member",
-    "documentation":"Each occurrence of LE Group Member defines one Legal Entity that is a member of one LE Group. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
-    "relationships":["LEGroup","LegalEntityCommon","MembershipStartDate","MembershipEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"FiscalYearEnd",
-    "description":"Fiscal Year End",
-    "documentation":"The Fiscal Year End Month of the LE.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"12.0"
-  },{
-    "name":"InCategoryEndDate",
-    "description":"In Category End Date",
-    "documentation":"The last date this LE was classified in this Category.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":""
-  },{
-    "name":"CountryName",
-    "description":"Country Name",
-    "documentation":"The official name for a Country",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"United States of America"
-  },{
-    "name":"PostalAddressLine2",
-    "description":"Postal Address - Line 2",
-    "documentation":"A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"CorporateEventStartDate",
-    "description":"Corporate Event Start Date",
-    "documentation":"The earliest or beginning of period date this Financial Info had effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"15-Jun-2012"
-  },{
-    "name":"PostalAddressLine7",
-    "description":"Postal Address - Line 7",
-    "documentation":"Supplemental Address Line.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"DocumentDate",
-    "description":"Document Date",
-    "documentation":"The date the Document was published.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"15-May-1992"
-  },{
-    "name":"DataSourceName",
-    "description":"Data Source Name",
-    "documentation":"The text name describing this Data Source",
-    "sampleValue":"Bloomberg"
-  },{
-    "name":"LEIdentifierType",
-    "description":"LE Identifier Type",
-    "documentation":"The type or genre of a Legal Entity Identifier. ",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"TICKER"
-  },{
-    "name":"DataManagementRoles",
-    "description":"Data Management Roles",
-    "documentation":"NA"
-  },{
-    "name":"LEStatus",
-    "description":"LE Status",
-    "documentation":"The certification status of the LE.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"AVAILABLE-CERTIFIED"
-  },{
-    "name":"BusinessType",
-    "description":"Business Type",
-    "documentation":"The specific type of Business Legal Entity.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"STANDARD"
-  },{
-    "name":"DissolutionDate",
-    "description":"Dissolution Date",
-    "documentation":"The Date the LE was officially dissolved.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"N.A."
-  },{
-    "name":"RegionSpan",
-    "description":"Region Span",
-    "documentation":"Desigates if this Region is: \n    \"WITHIN\" one Cournty \n    \"ACROSS\" multiple Countries",
-    "sampleValue":""
-  },{
-    "name":"SovereignOwnershipIndicator",
-    "description":"Sovereign Ownership Indicator",
-    "documentation":"Indicates if the LE is owned in whole or in part by a governing or sovereign authority.",
-    "extend":"io.dataset.atlas.types.Boolean",
-    "sampleValue":"NO"
-  },{
-    "name":"EmailAddress",
-    "description":"Email Address",
-    "documentation":"The email address associated with this Address ID",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"FormationDate",
-    "description":"Formation Date",
-    "documentation":"The Date of Incorporation or establishment.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"07/15/1869"
-  },{
-    "name":"TradingStatus",
-    "description":"Trading Status",
-    "documentation":"A code that indicates if a Legal Entity is tradable on any organized exchange.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"TRADABLE"
-  },{
-    "name":"FinancialInfo",
-    "description":"Financial Info",
-    "documentation":"Each occurrence of LE Financial Information provides time sensitive information about the monetary value or condition of a Legal Entity from a named Data Source. The information may consist of quantitative financial results, text information, or a web link to expanded information regarding one topic. The Financial Information Type and Sub Type attributes define the specific type of information provided in that occurrence.",
-    "relationships":["LegalEntityCommon","DataSource","FinancialInfoType","FinancialInfoSubType","FinancialInfoQuantitativeValue","FinancialInfoTextValue","QuantitativeDataLink","InfoStatus","FinancialInfoStartDate","FinancialInfoEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"Restrictions",
-    "description":"Restrictions",
-    "documentation":"Any restrictions against the LE.",
-    "sampleValue":"Numerous"
-  },{
-    "name":"StartofCountryRelationshipDate",
-    "description":"Start of Country Relationship Date",
-    "documentation":"The earliest date this Country was related to the Legal Entity.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"01-Jan-2001"
-  },{
-    "name":"InCategoryStartDate",
-    "description":"In Category Start Date",
-    "documentation":"The earliest date this LE was classified in this Category.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":""
-  },{
-    "name":"IndividualTaxID",
-    "description":"Individual Tax ID",
-    "documentation":"The tax identification number of an Individual.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"RelationshipEndDate",
-    "description":"Relationship End Date",
-    "documentation":"The latest date that a Legal Entity Relationship was in effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"\"--\""
-  },{
-    "name":"IdentifierName",
-    "description":"Identifier Name",
-    "documentation":"The formal  name of a a specific Tax Identifier issued by the Tax Authority.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"EMPLOYER IDENTIFICATIOIN NUMBER"
-  },{
-    "name":"LegalEntityCommon",
-    "description":"Legal Entity - Common",
-    "documentation":"Each occurrence of Legal Entity - Common provides standard information applicable to every Legal Entity. Additional attributes describing a particular type or category of Legal Entity are dependent upon the Legal Entity Type attribute and are further defined by Legal Entity - Business and Legal Entity - Individual sub-type entities.",
-    "relationships":["LegalEntityName","LegalEntityType","LegalEntitySubType","PrimaryCurrency","PrimaryTaxID","CountryofDomicile","StateofDomicile","CountryofRisk","LegalEntityIndicator","LEStatus","DateTimeCreated","DateTimeLastChanged","LastModifier","DateTimeLastReviewed","Reviewer"]
-  },{
-    "name":"FaxNumber",
-    "description":"Fax Number",
-    "documentation":"A phone number used for faxing purposes.",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"UserName",
-    "description":"User Name",
-    "documentation":"The legal, official name for this person or entity",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Goldman Sachs Group, Inc."
-  },{
-    "name":"MembershipEndDate",
-    "description":"Membership End Date",
-    "documentation":"The latest or end of period date in which a LE was last a member of a LE Group.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"\"--\""
-  },{
-    "name":"StateofDomicile",
-    "description":"State of Domicile",
-    "documentation":"The State in which this LE is domiciled.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":""
-  },{
-    "name":"LegalEntitySubType",
-    "description":"Legal Entity Sub Type",
-    "documentation":"The sub-type of entity determines reporting requirements and hierarchy methodologies to be used",
-    "extend":"io.dataset.atlas.types.String"
-  },{
-    "name":"LERatings",
-    "description":"LE Ratings",
-    "documentation":"Each occurrence of LE Ratings contains one time-sensitive score or evaluation of the credit worthiness of a Legal Entity that has been published by a Data Source, usually a credit rating agency.  Each LE Rating represents that Data Source's evaluation of qualitative and quantitative information about the LE including both public and in some cases, private information obtained by the rating agency.",
-    "relationships":["LegalEntityCommon","DataSource","RatingLegalEntityCommon","RatingsTypeCode","RatingName","RatingValue","RatingOutlookValue","RatingStatus","RatingStartDate","RatingEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"RatingLegalEntityCommon",
-    "description":"Rating Legal Entity Common",
-    "documentation":"The Agency or organization supplying the ratings.",
-    "relationships":["LegalEntityCommon"]
-  },{
-    "name":"ListingStatus",
-    "description":"Listing Status",
-    "documentation":"A code that indicates if a Legal Entity is listed on any organized exchange as provided by Bloomberg.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"LISTED"
-  },{
-    "name":"BusinessHierarchyDescription",
-    "description":"Business Hierarchy Description",
-    "documentation":"A full text explanation of this Business Hierarchy.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"GICS"
-  },{
-    "name":"DataSource",
-    "description":"Data Source",
-    "documentation":"Each occurrence of Data Source names and identifies an orginating source of information or  data utilized within the FIMOD Legal Entity Data Model.",
-    "relationships":["DataSourceName","DataSourceLEKeyID","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"ClassificationCategoryName",
-    "description":"Classification Category Name",
-    "documentation":"The Name for this Category within this Classification Set.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"AUTOMOTIVE"
-  },{
-    "name":"FinancialInfoStartDate",
-    "description":"Financial Info Start Date",
-    "documentation":"The earliest or beginning of period date this Financial Info had effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":""
-  },{
-    "name":"EndofCountryRelationshipDate",
-    "description":"End of Country Relationship Date",
-    "documentation":"The last date this Country was related to the Legal Entity.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"Address",
-    "description":"Address",
-    "documentation":"Each occurrence of Address provides one mailing, email, or web link address. The Address Type attribute designated the specific type of address. The Address Block Type specifies how individual address lines should be formatted for custom address line structuring in order to support different geographic address standards. One Address may be used or shared by any number of Individuals and/or for any number of Legal Entities.",
-    "relationships":["AddressType","AddressBlockType","AddressName","PostalAddressLine1","PostalAddressLine2","PostalAddressLine3","PostalAddressLine4","PostalAddressLine5","PostalAddressLine6","PostalAddressLine7","PostalAddressLine8","City","StateProvinceCanton","ZIPPostalCode","GeoLocationGPSCode","Locality","DependentorSubLocality","Country","PhoneNumber","FaxNumber","EmailAddress","WebLink","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"TaxorRegIdentifier",
-    "description":"Tax or Reg Identifier",
-    "documentation":"Each occurrence of LE Tax Identifier provides one Tax or one Regulatory Identifier that has been assigned to one LE by one Tax Authority. Each Legal Entity may have 'N\" number of Tax Identifiers.",
-    "relationships":["LegalEntityCommon","TaxorRegulatoryAuthority","TaxIdentifierValue","TaxIDStartDate","TaxIDEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"Country",
-    "description":"Country",
-    "documentation":"Each occurrence of Country names and identifies one Country that is of interest or has one or more relationships with a Legal Entity.",
-    "relationships":["CountryName","CountryISOCode","OtherCountryInformationTBD","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"IndividualofInterest",
-    "description":"Individual of Interest",
-    "documentation":"THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-  },{
-    "name":"InRegionStartDate",
-    "description":"In Region Start Date",
-    "documentation":"The earliest date this Country was a member of this Region.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"01-Jan-2010"
-  },{
-    "name":"GeoLocationGPSCode",
-    "description":"Geo Location GPS Code",
-    "documentation":"The GPS co-ordinates for this address",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"21° 16' 674S"
-  },{
-    "name":"FamilyName",
-    "description":"Family Name",
-    "documentation":"The Last name for this Individual.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Rubin"
-  },{
-    "name":"AuthorityType",
-    "description":"Authority Type",
-    "documentation":"Indicates is this a \"TAX\" or \"REG\"regulator authority.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"TAX"
-  },{
-    "name":"DocumentAuthor",
-    "description":"Document Author",
-    "documentation":"The name of the Author of the Document",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"UNKNOWN"
-  },{
-    "name":"IdentifierCode",
-    "description":"Identifier Code",
-    "documentation":"An abbreviation of a specific Tax Identifer issued by a Taxing Authority.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"EIN"
-  },{
-    "name":"RatingStartDate",
-    "description":"Rating Start Date",
-    "documentation":"The earliest or beginning of period date this Rating had effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"15-Feb-2012"
-  },{
-    "name":"DocumentBriefDescription",
-    "description":"Document Brief Description",
-    "documentation":"A short synopsis of the Document contents.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Corporate Bylaws"
-  },{
-    "name":"City",
-    "description":"City",
-    "documentation":"Free form text but could utilize/define domain of values",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"New York City"
-  },{
-    "name":"GivenName",
-    "description":"Given Name",
-    "documentation":"The Given first name for this Individual.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Robert"
-  },{
-    "name":"IndividualAddress",
-    "description":"Individual Address",
-    "documentation":"NA"
-  },{
-    "name":"DataTypes",
-    "description":"Data Types",
-    "documentation":" A number of monetary units specified in a currency where the unit of currency is explicit or it may be implied."
-  },{
-    "name":"AddressType",
-    "description":"Address Type",
-    "documentation":"A code that indicates if this address is POSTAL, EMAIL, WEBKLINK, PHONE NUMBER, or FAX NUMBER 1.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"POSTAL"
-  },{
-    "name":"LEGroup",
-    "description":"LE Group",
-    "documentation":"Each occurrence of LE Group defines one group or collection consisting of one or more Legal Entities. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
-    "relationships":["LegalEntityGroupName","LegalEntityGroupType","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"PrimaryExchangeCode",
-    "description":"Primary Exchange Code",
-    "documentation":"Code that identifies the exchange on which the LE is listed.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"NYSE"
-  },{
-    "name":"RatingOutlookValue",
-    "description":"Rating Outlook Value",
-    "documentation":"The value of the Outlook Status as provided by the Data Source",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"\"--\""
-  },{
-    "name":"WebLink",
-    "description":"Web Link",
-    "documentation":"The URL of a web page contain address or address-related information.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"IndividualPrivacyCode",
-    "description":"Individual Privacy Code",
-    "documentation":"A code that indicates the extent that Individual information that is shared or accessible.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"LIMITED - NAME ONLY"
-  },{
-    "name":"AddressRole",
-    "description":"Address Role",
-    "documentation":"Indicates how this address is being used in conjunction with this Legal Entity.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"CORP HEADQUARTER"
-  },{
-    "name":"AddressBlockOverrideType",
-    "description":"Address Block Override Type",
-    "documentation":"Allows override of standard Address Block Type for this Address. If blank, standard Address Block Type code used to format address.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"StateofIncorporation",
-    "description":"State of Incorporation",
-    "documentation":"The state in which this LE was first incorporated.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"NYS"
-  },{
-    "name":"LegalForm",
-    "description":"Legal Form",
-    "documentation":"The legal structure for the LE.  All developed countries have their own version of corporate law that defines the types of corporations that may be formed in their country anfd how they will be registered and regulated.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"US CORPORATION"
-  },{
-    "name":"CountryRegionRelationship",
-    "description":"Country Region Relationship",
-    "documentation":"Each occurrence of Country Region Relationship identifies one Country that participates in one Geographic Region.",
-    "relationships":["Country","GeoRegion","InRegionStartDate","InRegionEndDate","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"PrimaryCurrency",
-    "description":"Primary Currency",
-    "documentation":"The ISO Currency Code for the Primary Currency in which the LE trades and/or transacts.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"USD"
-  },{
-    "name":"DateTimeLastChanged",
-    "description":"Date/Time Last Changed",
-    "documentation":"The date and time data was last changed on this Entity.",
-    "extend":"io.dataset.atlas.types.DateTime",
-    "sampleValue":"01-Jan-2010"
-  },{
-    "name":"LEDocument",
-    "description":"LE Document",
-    "documentation":"Each occurrence of LE Document references one piece of written, printed, or electronic matter pertaining to one Legal Entity. The Document may be stored in any number of different file formats (PDF, Word, Text, HTML, etc.) as indicated by the Document File Type attribute. The actual Document contents is provided via the Document Link ID attribute.",
-    "relationships":["LegalEntityCommon","DocumentBriefDescription","DocumentDate","DocumentAuthor","DocumentLinkID","DocumentFileType","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"DocumentFileType",
-    "description":"Document File Type",
-    "documentation":"A code that indicates the file or technical format in which the Document is stored.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"PDF"
-  },{
-    "name":"LEBusinessHierarchyCategory",
-    "description":"LE Business Hierarchy Category",
-    "documentation":"Each occurrence of LE Business Hierarchy Category identifies, names, and defines one grouping or strata within a defined LE Business Hierarchy. Each Category represents one member of an ordered set that allows that category to be \"above,\" \"below,\" or \"at the same level\" as another Category member within that same Business Hierarchy.",
-    "relationships":["LEBusinessHierarchy","BusinessCategoryName","LEBusinessHierarchyCategory","HierarchyLevelNumber","BusinessHierarchySequenceNumber","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"DateTimeCreated",
-    "description":"Date/Time Created",
-    "documentation":"The date and time data was originally stored on this Entity.",
-    "extend":"io.dataset.atlas.types.DateTime",
-    "sampleValue":"01-Jan-2010"
-  },{
-    "name":"FinancialInfoType",
-    "description":"Financial Info Type",
-    "documentation":"The specific type of Quantitative Data linked this LE.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"BALANCE SHEET"
-  },{
-    "name":"ClassificationSet",
-    "description":"Classification Set",
-    "documentation":"Each occurrence of Classification Set provides one well-defined taxonomy, hierarchy, or listing structure for organizing and analyzing Legal Entities by grouping them into one or more Classification Categories. A Legal Entity may be categorized into any number of LE Classification Set/Categories via the LE Classification Category entity.",
-    "relationships":["ClassificationSetName","ClassificationSetAbbreviation","DataSource","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"AddressStatus",
-    "description":"Address Status",
-    "documentation":"A code that indicates if a particular Address is ACTIVE, PENDING, or CLOSED.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"ACTIVE"
-  },{
-    "name":"StateProvinceCanton",
-    "description":"State/Province/Canton",
-    "documentation":"Domain of values well defined e.g. US State Codes, Canada Province Codes, etc.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"New York"
-  },{
-    "name":"LegalEntityIndicator",
-    "description":"Legal Entity Indicator",
-    "documentation":"Indicates if the LE has been assigned an ISO 17442 Legal Entity Identifier.",
-    "extend":"io.dataset.atlas.types.Boolean",
-    "sampleValue":"NO"
-  },{
-    "name":"Keyword",
-    "description":"Keyword",
-    "documentation":"THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-  },{
-    "name":"BusinessHierarchyName",
-    "description":"Business Hierarchy Name",
-    "documentation":"The text name of this Business Hierarchy.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"North America Organization"
-  },{
-    "name":"AddressName",
-    "description":"Address Name",
-    "documentation":"Address or building name",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"Goldman Sacks Corporate"
-  },{
-    "name":"LERelationshipType",
-    "description":"LE Relationship Type",
-    "documentation":"Each occurrence of LE Relationship Type name and defines a particular type of LE-to-LE Relationship that has well-defined meaning in the FIMOD. Relationships may be limited to two members only (one Legal Entity and its one Ultimate Parent) or any number of members (e.g., one Legal Entity and \"N\" other Legal Entities within a designated grouping).",
-    "relationships":["LERelationshipTypeName","RelationshipTypeNumberCode","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"DataFileCatalogEntry",
-    "description":"Data File Catalog Entry",
-    "documentation":"THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-  },{
-    "name":"TaxorRegulatoryAuthority",
-    "description":"Tax or Regulatory Authority",
-    "documentation":"Each occurrence of Tax/Regulatory Authority identifies and names one Tax Authority or one Regulatory Agency within one Country (e.g. US) or within one Region (eg., EU) and designates one type of Tax or Regulatory Identifier issued by that authority.",
-    "relationships":["Country","GeoRegion","AuthorityType","AuthorityName","IdentifierName","IdentifierCode","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"CycleFrequency",
-    "description":"Cycle Frequency",
-    "documentation":"A code that can be used to recycle a Legal Entity Address on a recurring cycle. E.g., YEARLY for recurring Summer Address.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"IDEndDate",
-    "description":"ID End Date",
-    "documentation":"The last date that a LE Identifer was in effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"\"--\""
-  },{
-    "name":"User",
-    "description":"User",
-    "documentation":"Each occurrence of User provides standard information applicable to an entity or person mantaining the data within the model",
-    "relationships":["UserName","UserEmail","DateTimeCreated"],
-    "features":{
-      "io.dataset.atlas.site.hideNode":"true"
-    }
-  },{
-    "name":"RatingsTypeCode",
-    "description":"Ratings Type Code",
-    "documentation":"Allows different types of Rating from same agency. E.g., CURRENT, OUTLOOK, etc.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"CURR"
-  },{
-    "name":"RatingEndDate",
-    "description":"Rating End Date",
-    "documentation":"The latest or end of period date this Rating had effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"\"--\""
-  },{
-    "name":"DateTimeLastReviewed",
-    "description":"Date/Time Last Reviewed",
-    "documentation":"The date and time this LE relationship was formally reviewed.",
-    "extend":"io.dataset.atlas.types.DateTime",
-    "sampleValue":"15-Dec-2012"
-  },{
-    "name":"FinancialInfoQuantitativeValue",
-    "description":"Financial Info Quantitative Value",
-    "documentation":"A numeric value of a particular type of LE Financial Information.",
-    "extend":"io.dataset.atlas.types.Number",
-    "sampleValue":"5.506747E8"
-  },{
-    "name":"EventSequenceNumber",
-    "description":"Event Sequence Number",
-    "documentation":"When the same Corporate Event impacts more then one Legal Entity e.g., merger, split-up, etc., this number allows the individual LE's to be ordered into a designated sequence within that Event.",
-    "extend":"io.dataset.atlas.types.Number",
-    "sampleValue":"1.0"
-  },{
-    "name":"TaxIDStartDate",
-    "description":"Tax ID Start Date",
-    "documentation":"The earliest date this Tax ID was assigned to this LE.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"01-Jan-1955"
-  },{
-    "name":"PostalAddressLine1",
-    "description":"Postal Address - Line 1",
-    "documentation":"Free form text but typically contains first line of Postal Address.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"200 West Street"
-  },{
-    "name":"LegalEntityRole",
-    "description":"Legal Entity Role",
-    "documentation":"THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-  },{
-    "name":"PostalAddressLine6",
-    "description":"Postal Address - Line 6",
-    "documentation":"Supplemental Address Line.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"MembershipStartDate",
-    "description":"Membership Start Date",
-    "documentation":"The earliest or beginning of period date in which a LE was first a member of a LE Group.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"15-Feb-2012"
-  },{
-    "name":"RelationshipTypeNumberCode",
-    "description":"Relationship Type Number Code",
-    "documentation":"Indicates how many LE's are allowed in this Relationship Type. 1",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"TWO"
-  },{
-    "name":"ClassificationCategory",
-    "description":"Classification Category",
-    "documentation":"Each occurrence of Classification Category defines and name one well-defined grouping within a Classification Set for analyzing Legal Entities.",
-    "relationships":["ClassificationSet","ClassificationCategoryName","ClassificationCategoryCode","ClassificationCategory","ClassificationSequenceNumber","DateTimeCreated","DateTimeLastChanged","LastModifier"]
-  },{
-    "name":"FinancialInfoTextValue",
-    "description":"Financial Info Text  Value",
-    "documentation":"A financial measure expressed in alphanumeric characters such as a Rating Code.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"OfficialBusinessName",
-    "description":"Official Business Name",
-    "documentation":"The Official Business Name, if different from the Legal Entity Name.",
-    "extend":"io.dataset.atlas.types.String",
-    "sampleValue":"<BLANK>"
-  },{
-    "name":"CorporateEventEndDate",
-    "description":"Corporate Event End Date",
-    "documentation":"The latest or end of period date this Financial Info had effect.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"15-Jun-2012"
-  },{
-    "name":"InRegionEndDate",
-    "description":"In Region End Date",
-    "documentation":"The last date this Country was a member of this Region.",
-    "extend":"io.dataset.atlas.types.Date",
-    "sampleValue":"\"--\""
-  }]
+    "atlasVersion": "1.1.0",
+    "namespace": "org.fimod.lei",
+    "name": "LegalEntityIdentifier",
+    "description": "Legal Entity Identifier",
+    "documentation": "An association, corporation, partnership, proprietorship, trust, or individual that has legal standing in the eyes of the law. A legal entity has legal capacity to enter into agreements or contracts, assume obligations, incur and pay debts, sue and be sued in its own right, and to be held responsible for its actions.",
+    "version": "1.4.0",
+    "organization": {
+        "name": "fimod",
+        "webSiteUrl": "http://fimod.org",
+        "logoUrl": "classpath:/fimod-logo.png"
+    },
+    "contributors": [
+        {"name": "Predrag Dizdarevic"},
+        {"name": "Tom Charlton"},
+        {"name": "John Carroll"},
+        {"name": "Garry Wright"},
+        {"name": "Ken Price"},
+        {"name": "Niel Siekerka"},
+        {"name": "Philip Dodds"},
+        {"name": "Roger Newman"}
+    ],
+    "license": {
+        "name": "Apache Software License v2.0",
+        "description": "Apache Software License",
+        "copyrightNotice": "(C) Copyright 2012 FiMod (http://fimod.org)",
+        "webUrl": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "revisionControlSystem": {
+        "system": "github",
+        "webUrl": "https://github.com/fimod/lei"
+    },
+    "issueTracker": {
+        "system": "github",
+        "webUrl": "https://github.com/fimod/lei/issues"
+    },
+    "nodes": [
+        {
+            "name": "ClassificationSetName",
+            "description": "Classification Set Name",
+            "documentation": "The Name or standard abbreviation for this Classification Set.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Global Industry Classification Standard"
+        },
+        {
+            "name": "CountryofDomicile",
+            "description": "Country of Domicile",
+            "documentation": "The Country in which this Legal Entity was originally established.",
+            "relationships": ["Country"]
+        },
+        {
+            "name": "CountryofIncorporation",
+            "description": "Country of Domicile",
+            "documentation": "The Country in which the LE files its registration.",
+            "relationships": ["Country"]
+        },
+        {
+            "name": "CountryofRisk",
+            "description": "Country of Risk",
+            "documentation": "The Country that exposes the LE to the most serious financial risk, as contrasted to the Country in which the LE was originally located or founded.",
+            "relationships": ["Country"]
+        },
+        {
+            "name": "EventStatus",
+            "description": "Event Status",
+            "documentation": "The state or status of this Corporate Event.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "PENDING"
+        },
+        {
+            "name": "LEtoCountryRelationshipType",
+            "description": "LE to Country Relationship Type",
+            "documentation": "Indicates how this Country is related to the Legal Entity.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "COUNTRY OF INCORPORATION"
+        },
+        {
+            "name": "FinancialInfoEndDate",
+            "description": "Financial Info End Date",
+            "documentation": "The latest or end of period date this Financial Info had effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": ""
+        },
+        {
+            "name": "PhoneNumber",
+            "description": "Phone Number",
+            "documentation": "The phone number associated with this Address ID",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "LEAddressEndDate",
+            "description": "LE Address End Date",
+            "documentation": "A Date after which a Legal Entity Address is no longer active.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "ZIPPostalCode",
+            "description": "ZIP/Postal Code",
+            "documentation": "Free form text  with well defined format and domain of values for different countries",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "100069.0"
+        },
+        {
+            "name": "LegalEntityName",
+            "description": "Legal Entity Name",
+            "documentation": "The legal, official name for this LE expressed in English. Additional names for the Legal Entity, if required, are stored on separate occurrences of Legal Entity Alternate Name including the Legal Entity Name expressed in its native language.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Goldman Sachs Group, Inc."
+        },
+        {
+            "name": "HierarchyLevelNumber",
+            "description": "Hierarchy Level Number",
+            "documentation": "Indicates the strata in which this Category is ranked. The top-most strata is \"1\", the second level is \"2\", etc. All Categories within the same strata will have the same Level Number.",
+            "extend": "io.dataset.atlas.types.Number",
+            "sampleValue": "2.0"
+        },
+        {
+            "name": "LEIdentifierValue",
+            "description": "LE Identifier Value",
+            "documentation": "The character string  that identifies the Legal Entity as designated by the Identifier Type.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "GSIBKRSE"
+        },
+        {
+            "name": "LegalEntityType",
+            "description": "Legal Entity Type",
+            "documentation": "A code that distinguishes one type of Legal Entity from another. Each separate Legal Entity Type has different data attribute and/or data relationship requirements.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "BUSINESS",
+            "characteristics" : {
+                "enumeration" : ["BUSINESS","INDIVIDUAL","OTHER","QUASI-LE"]
+
+            }
+        },
+        {
+            "name": "OtherCountryInformationTBD",
+            "description": "Other Country Information - TBD",
+            "documentation": "T.B.D.",
+            "sampleValue": "To be determined."
+        },
+        {
+            "name": "LEAddress",
+            "description": "LE Address",
+            "documentation": "Each occurrence of Legal Entity Address provides one Address for one Legal Entity for a designated period of time.  Each Legal Entity may have any number of Addresses which may be further qualified by the Address Role attribute.  The same Address may be used for any number of Individuals and/or Legal Entities.  The Individual  Address Start and End Date in conjunction with the Cycle Frequency attribute allows an address to be used for a specified period of time and then be repeated on a designated cycle, such as for a summer to be used during the summer months only on a yearly basis.",
+            "relationships": [
+                "LegalEntityCommon",
+                "Address",
+                "AddressRole",
+                "AddressBlockOverrideType",
+                "LEAddressStartDate",
+                "LEAddressEndDate",
+                "CycleFrequency",
+                "AddressStatus",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "IdentifierStatus",
+            "description": "Identifier Status",
+            "documentation": "Indicates the state of the LE Identifier at the Source 2",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ACTIVE",
+            "characteristics" : {
+                "enumeration" : ["PENDING","ACTIVE","REASSIGNED","CLOSED"]
+            }
+        },
+        {
+            "name": "IDStartDate",
+            "description": "ID Start Date",
+            "documentation": "The earliest date that a LE Identifier was in effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "28-Jan-2012"
+        },
+        {
+            "name": "GeoRegion",
+            "description": "Geo Region",
+            "documentation": "Each occurrence of Geographic Region names and identifies one geographic area. The Geographic Area  may be within a single country or may extend across multiple countries as indicated by the Region Span attribute. Each Geographic Area  in turn has one of more Tax or Regulatory Authorities that oversee Legal Entities.",
+            "relationships": [
+                "GeoRegionName",
+                "GeoRegionType",
+                "RegionSpan",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "RatingName",
+            "description": "Rating Name",
+            "documentation": "The name of the specific rating.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Moody's Corporate Bond Rating"
+        },
+        {
+            "name": "FinancialInfoSubType",
+            "description": "Financial Info Sub Type",
+            "documentation": "A free-form code that provides a lower-level breakdown of Financial Information regarding a Legal Entity.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "SHAREHOLDER EQUITY"
+        },
+        {
+            "name": "LEtoLERelationship",
+            "description": "LE to LE Relationship",
+            "documentation": "Each occurrence of LE to LE Relationship defines a pair of two Legal Entities that are related to each other.",
+            "relationships": [
+                "LERelationshipType",
+                "RelationshipRole",
+                "ParentLegalEntityCommon",
+                "ChildLegalEntityCommon",
+                "OwnershipPercentage",
+                "LEAddress",
+                "RelationshipStartDate",
+                "RelationshipEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier",
+                "DateTimeLastReviewed",
+                "Reviewer"
+            ]
+        },
+        {
+            "name": "ParentLegalEntityCommon",
+            "description": "A parent Legal Entity",
+            "documentation": "The Legal Entity that acts as the Parent or Primary in this Relationship.",
+            "relationships": ["LegalEntityCommon"]
+        },
+        {
+            "name": "ChildLegalEntityCommon",
+            "description": "A child Legal Entity",
+            "documentation": "The Legal Entity that acts as the Child or Secondary in this Relationship.",
+            "relationships": ["LegalEntityCommon"]
+        },
+        {
+            "name": "Reviewer",
+            "description": "Reviewer User Id",
+            "documentation": "The User who last reviewed this.",
+            "relationships": ["User"]
+        },
+        {
+            "name": "LastModifier",
+            "description": "Last Changed User Id",
+            "documentation": "The User who last changed data on this Entity.",
+            "relationships": ["User"]
+        },
+        {
+            "name": "LECorporateEvent",
+            "description": "LE Corporate Event",
+            "documentation": "Each occurrence of LE Corporate Event defines one Business Legal Entity effected by one Corporate Event. Each Corporate Event may impact one or multiple Business Legal Entities (e.g., merger, acquistion, etc.). If the Corporate Event impacts \"n\" number of LE's, then there will be \"n\" occurrence of LE Corporate Event, one for each Business LE impacted by the event.  ",
+            "relationships": [
+                "CorporateEvent",
+                "LegalEntityCommon",
+                "EventSequenceNumber",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "DocumentLinkID",
+            "description": "Document Link ID",
+            "documentation": "The file ID,  URL or similar link to one LE Document.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "HTTP://WWW.CORP.COM/DOC/0515199205"
+        },
+        {
+            "name": "IndividualFullName",
+            "description": "Individual Full Name",
+            "documentation": "The full name of this individual",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Robert Rubin"
+        },
+        {
+            "name": "MiddleName",
+            "description": "Middle Name",
+            "documentation": "The Middle name for this Individual.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "T"
+        },
+        {
+            "name": "AddressBlockType",
+            "description": "Address Block Type",
+            "documentation": "For POSTAL ADDRESS, Indicates the sequence and structure for assembling the components into a Formatted Address Block. Default is \"USPS.\"",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "USPS"
+        },
+        {
+            "name": "BusinessHierarchySequenceNumber",
+            "description": "Business Hierarchy Sequence Number",
+            "documentation": "A number that indicates the Category's \"rank\" within the Business Hierarchy. Allows the Category members of a Business Hierarchy to be arranged in a defined order.",
+            "extend": "io.dataset.atlas.types.Number",
+            "sampleValue": "7.0"
+        },
+        {
+            "name": "RelationshipStartDate",
+            "description": "Relationship Start Date",
+            "documentation": "The earliest date that a Legal Entity Relationship was in effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "01-Jan-1955"
+        },
+        {
+            "name": "PostalAddressLine3",
+            "description": "Postal Address - Line 3",
+            "documentation": "A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "LEClassificationCategory",
+            "description": "LE Classification Category",
+            "documentation": "Each occurrence of Classification Category identifies one Legal Entity that has been categorized in a Category Grouping within a Classification Set.",
+            "relationships": [
+                "LegalEntityCommon",
+                "ClassificationCategory",
+                "InCategoryStartDate",
+                "InCategoryEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "PostalAddressLine8",
+            "description": "Postal Address - Line 8",
+            "documentation": "Supplemental Address Line.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "CorporateEventLinkID",
+            "description": "Corporate Event Link ID",
+            "documentation": "The file ID,  URL or similar link to the details of a specific Corporate Action Event. The details regarding the terms and conditions of the Corporate Action are stored outside the Legal Entity Data Domain but may be referenced by this ID Key or URL.",
+            "sampleValue": "SH06152012"
+        },
+        {
+            "name": "PostalAddressLine5",
+            "description": "Postal Address - Line 5",
+            "documentation": "Supplemental Address Line.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "Locality",
+            "description": "Locality",
+            "documentation": "Free form text but typically the city or geographic locale ",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Wall Street"
+        },
+        {
+            "name": "UserEmail",
+            "description": "User Email",
+            "documentation": "A contact email adress for this person or entity",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "BUSINESS"
+        },
+        {
+            "name": "RegistrationStatus",
+            "description": "Registration Status",
+            "documentation": "Status of the entity with is registration authority.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": ""
+        },
+        {
+            "name": "CountryISOCode",
+            "description": "Country ISO Code",
+            "documentation": "The ISO 3166 code that identifies this Country.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "USA"
+        },
+        {
+            "name": "RegistrationNumber",
+            "description": "Registration Number",
+            "documentation": "The Primary Registration Number for this Legal Entity. If registered in multiple locations, then additional Registration Numbers each stored as occurrence of Tax/Regulatory Identifier.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "NYS-0567852"
+        },
+        {
+            "name": "LERelationshipTypeName",
+            "description": "LE Relationship Type Name",
+            "documentation": "Free form text describing a well-defined Entity to Entity Relationship Type.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ULTIMATE PARENT"
+        },
+        {
+            "name": "TaxIdentifierValue",
+            "description": "Tax Identifier Value",
+            "documentation": "The value of the Tax Identifier for a LE.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "2.01149555E8"
+        },
+        {
+            "name": "LegalEntityIndividual",
+            "description": "Legal Entity - Individual",
+            "documentation": "Each occurrence of Legal Entity - Individual identifies, names and supplies indicative information regarding one Natural Person. Each Individual is a human being as contrasted to a Legal Person, such as a Corporation having legal standing.",
+            "relationships": [
+                "LegalEntityCommon",
+                "IndividualFullName",
+                "GivenName",
+                "MiddleName",
+                "FamilyName",
+                "Title",
+                "Salutation",
+                "IndividualPrivacyCode",
+                "BirthDate",
+                "IndividualTaxID",
+                "TaxorRegulatoryAuthority",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "QuantitativeDataLink",
+            "description": "Quantitative Data/Link",
+            "documentation": "The URL or similar link to the specific Quantitative Data for this LE.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "BirthDate",
+            "description": "Birth Date",
+            "documentation": "The date of birth of an Individual.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "09-Jul-1945"
+        },
+        {
+            "name": "ClassificationSetAbbreviation",
+            "description": "Classification Set Abbreviation",
+            "documentation": "A short name or abbreviation for this Classification Set 2.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "GICS",
+            "characteristics" : {
+                "enumeration" : ["NOGA208","GICS","GICS2","NACS"]
+            }
+        },
+        {
+            "name": "GeoRegionType",
+            "description": "Geo Region Type",
+            "documentation": "An abbreviation or term that indicates the type or purpose of The Region.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "GEO AREA"
+        },
+        {
+            "name": "BusinessCategoryName",
+            "description": "Business Category Name",
+            "documentation": "The Name for this Category within this Business Hierachy.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "North East Division"
+        },
+        {
+            "name": "OwnershipPercentage",
+            "description": "Ownership Percentage",
+            "documentation": "The percent of ownership of a Secondary Legal Entity held by the Parent or Primary Legal Entity ",
+            "extend": "io.dataset.atlas.types.Number",
+            "sampleValue": "0.6525"
+        },
+        {
+            "name": "LEBusinessHierarchy",
+            "description": "LE Business Hierarchy",
+            "documentation": "NA",
+            "relationships": [
+                "BusinessHierarchyName",
+                "BusinessHierarchyDescription",
+                "BusinessHierarchyType",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "CorporateEvent",
+            "description": "Corporate Event",
+            "documentation": "Each occurrence of Corporate Event identifies and provides summary information regarding one action, event, or activity occuring in the past or scheduled to occur in the future that has significant effect on one Business Legal Entity (e.g., Shareholder Meeting) or on multiple Business Legal Entities (e.g., merger or acquistion) as provided by one Data Source. The full terms, conditions, and detail informaton regarding the Corporate Event itself are not stored in Legal Entity Data Domain but are instead stored separately outside the domain space and are referenced by the Corporate Event ID attribute. The specific one or multiple Business LEs impacted by the Corporate Event are identified by separate occurrences of LE Corporate Event entity.",
+            "relationships": [
+                "DataSource",
+                "DataSourceEvent",
+                "EventType",
+                "CorporateActionDescription",
+                "CorporateEventLinkID",
+                "EventStatus",
+                "CorporateEventStartDate",
+                "CorporateEventEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "ClassificationSequenceNumber",
+            "description": "Classification Sequence Number",
+            "documentation": "A number that allows the Category members of a Classification Set to be arranged in a defined order.",
+            "extend": "io.dataset.atlas.types.Number",
+            "sampleValue": "3.0"
+        },
+        {
+            "name": "BusinessHierarchyType",
+            "description": "Business Hierarchy Type",
+            "documentation": "Describes the type or genre of this Business Hierarchy.",
+            "sampleValue": "ORGANIZATION"
+        },
+        {
+            "name": "Salutation",
+            "description": "Salutation",
+            "documentation": "The desired opening salutation when addressing or meeting an Individual.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Bob"
+        },
+        {
+            "name": "GeoRegionName",
+            "description": "Geo Region Name",
+            "documentation": "The name for this Geographic Region.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "North America"
+        },
+        {
+            "name": "LEAlternateName",
+            "description": "LE Alternate Name",
+            "documentation": "Each occurrence of LE Alternate Name provides an additional name or alias in a designated language provided by a Data Source by which a Legal Entity is known.  Every LE has one Legal Entity Name attribute that is stored on the Legal Entity and may have \"n\" number of additional alternate names."
+        },
+        {
+            "name": "LegalEntityGroupName",
+            "description": "Legal Entity Group Name",
+            "documentation": "A descriptive name for a LE Group.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Large Financial Services Firms"
+        },
+        {
+            "name": "AuthorityName",
+            "description": "Authority Name",
+            "documentation": "The name of the Tax or Regulatory Authority.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Internal Revenue Service"
+        },
+        {
+            "name": "LEinCountry",
+            "description": "LE in Country",
+            "documentation": "Each occurrence of Legal Entry in Country identifies one Country that is related to one Legal Entity. The LE to Country Relationship Type Code indicates the type of relationship.",
+            "relationships": [
+                "Country",
+                "LegalEntityCommon",
+                "LEtoCountryRelationshipType",
+                "StartofCountryRelationshipDate",
+                "EndofCountryRelationshipDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "LEIdentifier",
+            "description": "LE Identifier",
+            "documentation": "Each occurrence of LE Identifier contains one number, series of alphanumeric characters, or similar unique code provided by a Data Source that is used to identify one Legal Entity.  There may be multiple different LE Identifiers for each Legal Entity. Each different LE Identifier has a LE Identifier Type attribute that specifies the organization or body that establishes, assigns, and maintains that particular Identifier type.",
+            "relationships": [
+                "LegalEntityCommon",
+                "LEIdentifierType",
+                "DataSource",
+                "LEIdentifierValue",
+                "AlternateNameAtSource",
+                "IDStartDate",
+                "IDEndDate",
+                "IdentifierStatus",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "AlternateNameAtSource",
+            "description": "Alternate Name at Source",
+            "documentation": "Alternate name by which this LE is known at the LE Identifier Source. <BLANK> if not applicable.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "RegistrationDate",
+            "description": "Registration Date",
+            "documentation": "The initial Date of Registration",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "07/15/1869"
+        },
+        {
+            "name": "RatingStatus",
+            "description": "Rating Status",
+            "documentation": "The state of status of Rating score.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ACTIVE"
+        },
+        {
+            "name": "EventType",
+            "description": "Event Type",
+            "documentation": "Indicates the type or category of Corporate Event.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "SHAREHOLDER MEETING"
+        },
+        {
+            "name": "LegalEntityBusiness",
+            "description": "Legal Entity - Business",
+            "documentation": "Each occurrence of Legal Entity - Business provides reference information specific to a corporation, partnership, proprietorship, trust, fund, or similar organization that has legal standing in the eyes of the law. ",
+            "relationships": [
+                "LegalEntityCommon",
+                "LEBusinessHierarchy",
+                "OfficialBusinessName",
+                "BusinessType",
+                "LegalForm",
+                "CountryofIncorporation",
+                "StateofIncorporation",
+                "CountryofRisk",
+                "RegistrationDate",
+                "RegistrationNumber",
+                "TaxorRegulatoryAuthority",
+                "FormationDate",
+                "DissolutionDate",
+                "FiscalYearEnd",
+                "Restrictions",
+                "PrimaryExchangeCode",
+                "PrimaryListingSymbol",
+                "TradingStatus",
+                "ListingStatus",
+                "RegistrationStatus",
+                "LegalEntityIndicator",
+                "SovereignOwnershipIndicator",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "PrimaryListingSymbol",
+            "description": "Primary Listing Symbol",
+            "documentation": "The listing symbol for the common stock of the entity on its primary exchange listing. ",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": ""
+        },
+        {
+            "name": "LEAddressStartDate",
+            "description": "LE Address Start Date",
+            "documentation": "A Date on which a Legal Entity Address became active.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "01-Jan-2010"
+        },
+        {
+            "name": "RelationshipRole",
+            "description": "Relationship Role",
+            "documentation": "A code that explains how two LE's are related to each other.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ULTIMATE PARENT"
+        },
+        {
+            "name": "TaxIDEndDate",
+            "description": "Tax ID End Date",
+            "documentation": "The last date this Tax ID was assigned to this LE.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "DependentorSubLocality",
+            "description": "Dependent or Sub-Locality",
+            "documentation": "Free form text\u2013 in the US municipality",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "New York City"
+        },
+        {
+            "name": "CorporateActionDescription",
+            "description": "Corporate Action Description",
+            "documentation": "A short description of the Corporate Action Event.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Annual Shareholder Meeting."
+        },
+        {
+            "name": "LegalEntityGroupType",
+            "description": "Legal Entity Group Type",
+            "documentation": "The ID of Data Source that provides this Financial Information.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "LE ONLY"
+        },
+        {
+            "name": "ClassificationCategoryCode",
+            "description": "Classification Category Code",
+            "documentation": "A standard abbreviation for this Classification within this Classfication Set.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "AUTO"
+        },
+        {
+            "name": "PostalAddressLine4",
+            "description": "Postal Address - Line 4",
+            "documentation": "A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "PrimaryTaxID",
+            "description": "Primary Tax  ID",
+            "documentation": "The ID of the Tax Identifier for primary identifying number for this LE for tax reporting and other legal purposes. When multiple tax identification numbers are required for the same LE, each Tax ID is also stored as a separate occurrence of Tax Identifier Entity.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "2.01115555E8"
+        },
+        {
+            "name": "RatingValue",
+            "description": "Rating Value",
+            "documentation": "A measure of the financial worthiness of a LE usually expressed as a letter and/or numeric score.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Aaa"
+        },
+        {
+            "name": "Title",
+            "description": "Title",
+            "documentation": "The prefix title to formally address an Individual.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Mr."
+        },
+        {
+            "name": "DataSourceLEKeyID",
+            "description": "Data Source LE Key ID",
+            "documentation": "The ID of the Legal Entity represented by this Data Source. Provides additional information regarding a Data Source.",
+            "sampleValue": "1000525.0"
+        },
+        {
+            "name": "InfoStatus",
+            "description": "Info Status",
+            "documentation": "The state of status of Financial Information regarding a Legal Entity.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ACTIVE"
+        },
+        {
+            "name": "LEGroupMember",
+            "description": "LE Group Member",
+            "documentation": "Each occurrence of LE Group Member defines one Legal Entity that is a member of one LE Group. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
+            "relationships": [
+                "LEGroup",
+                "LegalEntityCommon",
+                "MembershipStartDate",
+                "MembershipEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "FiscalYearEnd",
+            "description": "Fiscal Year End",
+            "documentation": "The Fiscal Year End Month of the LE.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "12.0"
+        },
+        {
+            "name": "InCategoryEndDate",
+            "description": "In Category End Date",
+            "documentation": "The last date this LE was classified in this Category.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": ""
+        },
+        {
+            "name": "CountryName",
+            "description": "Country Name",
+            "documentation": "The official name for a Country",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "United States of America"
+        },
+        {
+            "name": "PostalAddressLine2",
+            "description": "Postal Address - Line 2",
+            "documentation": "A free form text line containing the continuation of Postal Address, if multiple Address Lines are needed.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "CorporateEventStartDate",
+            "description": "Corporate Event Start Date",
+            "documentation": "The earliest or beginning of period date this Financial Info had effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "15-Jun-2012"
+        },
+        {
+            "name": "PostalAddressLine7",
+            "description": "Postal Address - Line 7",
+            "documentation": "Supplemental Address Line.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "DocumentDate",
+            "description": "Document Date",
+            "documentation": "The date the Document was published.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "15-May-1992"
+        },
+        {
+            "name": "DataSourceName",
+            "description": "Data Source Name",
+            "documentation": "The text name describing this Data Source",
+            "sampleValue": "Bloomberg"
+        },
+        {
+            "name": "LEIdentifierType",
+            "description": "LE Identifier Type",
+            "documentation": "The type or genre of a Legal Entity Identifier. ",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "TICKER",
+            "characteristics" : {
+                "enumeration" : ["Avox","BASECUSIP","Bloomberg ID","DCC Clearing Number","DUNS","External LEM ID","FCC Registration Number","Fitch","Internal LEM ID","LSDB ID","LSE Member Number","Moodys","Reuters","S&P","SWIFT BIC CODE","Telekurs ID","URL - Web Address","Vendor LEM ID"]
+            }
+        },
+        {
+            "name": "DataManagementRoles",
+            "description": "Data Management Roles",
+            "documentation": "NA"
+        },
+        {
+            "name": "LEStatus",
+            "description": "LE Status",
+            "documentation": "The certification status of the LE.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "AVAILABLE-CERTIFIED"
+        },
+        {
+            "name": "BusinessType",
+            "description": "Business Type",
+            "documentation": "The specific type of Business Legal Entity.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "STANDARD"
+        },
+        {
+            "name": "DissolutionDate",
+            "description": "Dissolution Date",
+            "documentation": "The Date the LE was officially dissolved.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "N.A."
+        },
+        {
+            "name": "RegionSpan",
+            "description": "Region Span",
+            "documentation": "Desigates if this Region is: \n    \"WITHIN\" one Cournty \n    \"ACROSS\" multiple Countries",
+            "sampleValue": ""
+        },
+        {
+            "name": "SovereignOwnershipIndicator",
+            "description": "Sovereign Ownership Indicator",
+            "documentation": "Indicates if the LE is owned in whole or in part by a governing or sovereign authority.",
+            "extend": "io.dataset.atlas.types.Boolean",
+            "sampleValue": "NO"
+        },
+        {
+            "name": "EmailAddress",
+            "description": "Email Address",
+            "documentation": "The email address associated with this Address ID",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "FormationDate",
+            "description": "Formation Date",
+            "documentation": "The Date of Incorporation or establishment.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "07/15/1869"
+        },
+        {
+            "name": "TradingStatus",
+            "description": "Trading Status",
+            "documentation": "A code that indicates if a Legal Entity is tradable on any organized exchange.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "TRADABLE"
+        },
+        {
+            "name": "FinancialInfo",
+            "description": "Financial Info",
+            "documentation": "Each occurrence of LE Financial Information provides time sensitive information about the monetary value or condition of a Legal Entity from a named Data Source. The information may consist of quantitative financial results, text information, or a web link to expanded information regarding one topic. The Financial Information Type and Sub Type attributes define the specific type of information provided in that occurrence.",
+            "relationships": [
+                "LegalEntityCommon",
+                "DataSource",
+                "FinancialInfoType",
+                "FinancialInfoSubType",
+                "FinancialInfoQuantitativeValue",
+                "FinancialInfoTextValue",
+                "QuantitativeDataLink",
+                "InfoStatus",
+                "FinancialInfoStartDate",
+                "FinancialInfoEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "Restrictions",
+            "description": "Restrictions",
+            "documentation": "Any restrictions against the LE.",
+            "sampleValue": "Numerous"
+        },
+        {
+            "name": "StartofCountryRelationshipDate",
+            "description": "Start of Country Relationship Date",
+            "documentation": "The earliest date this Country was related to the Legal Entity.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "01-Jan-2001"
+        },
+        {
+            "name": "InCategoryStartDate",
+            "description": "In Category Start Date",
+            "documentation": "The earliest date this LE was classified in this Category.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": ""
+        },
+        {
+            "name": "IndividualTaxID",
+            "description": "Individual Tax ID",
+            "documentation": "The tax identification number of an Individual.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "RelationshipEndDate",
+            "description": "Relationship End Date",
+            "documentation": "The latest date that a Legal Entity Relationship was in effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "IdentifierName",
+            "description": "Identifier Name",
+            "documentation": "The formal  name of a a specific Tax Identifier issued by the Tax Authority.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "EMPLOYER IDENTIFICATIOIN NUMBER"
+        },
+        {
+            "name": "LegalEntityCommon",
+            "description": "Legal Entity - Common",
+            "documentation": "Each occurrence of Legal Entity - Common provides standard information applicable to every Legal Entity. Additional attributes describing a particular type or category of Legal Entity are dependent upon the Legal Entity Type attribute and are further defined by Legal Entity - Business and Legal Entity - Individual sub-type entities.",
+            "relationships": [
+                "LegalEntityName",
+                "LegalEntityType",
+                "LegalEntitySubType",
+                "PrimaryCurrency",
+                "PrimaryTaxID",
+                "CountryofDomicile",
+                "StateofDomicile",
+                "CountryofRisk",
+                "LegalEntityIndicator",
+                "LEStatus",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier",
+                "DateTimeLastReviewed",
+                "Reviewer"
+            ]
+        },
+        {
+            "name": "FaxNumber",
+            "description": "Fax Number",
+            "documentation": "A phone number used for faxing purposes.",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "UserName",
+            "description": "User Name",
+            "documentation": "The legal, official name for this person or entity",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Goldman Sachs Group, Inc."
+        },
+        {
+            "name": "MembershipEndDate",
+            "description": "Membership End Date",
+            "documentation": "The latest or end of period date in which a LE was last a member of a LE Group.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "StateofDomicile",
+            "description": "State of Domicile",
+            "documentation": "The State in which this LE is domiciled.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": ""
+        },
+        {
+            "name": "LegalEntitySubType",
+            "description": "Legal Entity Sub Type",
+            "documentation": "The sub-type of entity determines reporting requirements and hierarchy methodologies to be used",
+            "extend": "io.dataset.atlas.types.String",
+            "characteristics" : {
+                "enumeration" : ["Branch","Fund Family","Trust","Special Purpose Vehicle"]
+            }
+        },
+        {
+            "name": "LERatings",
+            "description": "LE Ratings",
+            "documentation": "Each occurrence of LE Ratings contains one time-sensitive score or evaluation of the credit worthiness of a Legal Entity that has been published by a Data Source, usually a credit rating agency.  Each LE Rating represents that Data Source's evaluation of qualitative and quantitative information about the LE including both public and in some cases, private information obtained by the rating agency.",
+            "relationships": [
+                "LegalEntityCommon",
+                "DataSource",
+                "RatingLegalEntityCommon",
+                "RatingsTypeCode",
+                "RatingName",
+                "RatingValue",
+                "RatingOutlookValue",
+                "RatingStatus",
+                "RatingStartDate",
+                "RatingEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "RatingLegalEntityCommon",
+            "description": "Rating Legal Entity Common",
+            "documentation": "The Agency or organization supplying the ratings.",
+            "relationships": ["LegalEntityCommon"]
+        },
+        {
+            "name": "ListingStatus",
+            "description": "Listing Status",
+            "documentation": "A code that indicates if a Legal Entity is listed on any organized exchange as provided by Bloomberg.  This is the Bloomberg derived security status.  Based on the security's activity messages from pricing sources such as exchanges and marketplaces, Bloomberg creates five simple security statuses.  They are the following: AUCT - Security is in an auction phase.  Market participants are allowed to enter orders and quotes, but no trades are executed in the orderbook until the auction is complete.  HALT - Trading activity in the security is halted.  TRAD - Security is actively trading.  CLOS - Security has closed trading for the day.  OUT - Security is trading, but it is an off-hours period. ",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "LISTED",
+            "characteristics" : {
+                "enumeration" : ["AUCT","HALT","TRAD","CLOS","OUT"]
+            }
+        },
+        {
+            "name": "BusinessHierarchyDescription",
+            "description": "Business Hierarchy Description",
+            "documentation": "A full text explanation of this Business Hierarchy.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "GICS"
+        },
+        {
+            "name": "DataSource",
+            "description": "Data Source",
+            "documentation": "Each occurrence of Data Source names and identifies an orginating source of information or  data utilized within the FIMOD Legal Entity Data Model.",
+            "relationships": [
+                "DataSourceName",
+                "DataSourceLEKeyID",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "ClassificationCategoryName",
+            "description": "Classification Category Name",
+            "documentation": "The Name for this Category within this Classification Set.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "AUTOMOTIVE"
+        },
+        {
+            "name": "FinancialInfoStartDate",
+            "description": "Financial Info Start Date",
+            "documentation": "The earliest or beginning of period date this Financial Info had effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": ""
+        },
+        {
+            "name": "EndofCountryRelationshipDate",
+            "description": "End of Country Relationship Date",
+            "documentation": "The last date this Country was related to the Legal Entity.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "Address",
+            "description": "Address",
+            "documentation": "Each occurrence of Address provides one mailing, email, or web link address. The Address Type attribute designated the specific type of address. The Address Block Type specifies how individual address lines should be formatted for custom address line structuring in order to support different geographic address standards. One Address may be used or shared by any number of Individuals and/or for any number of Legal Entities.",
+            "relationships": [
+                "AddressType",
+                "AddressBlockType",
+                "AddressName",
+                "PostalAddressLine1",
+                "PostalAddressLine2",
+                "PostalAddressLine3",
+                "PostalAddressLine4",
+                "PostalAddressLine5",
+                "PostalAddressLine6",
+                "PostalAddressLine7",
+                "PostalAddressLine8",
+                "City",
+                "StateProvinceCanton",
+                "ZIPPostalCode",
+                "GeoLocationGPSCode",
+                "Locality",
+                "DependentorSubLocality",
+                "Country",
+                "PhoneNumber",
+                "FaxNumber",
+                "EmailAddress",
+                "WebLink",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "TaxorRegIdentifier",
+            "description": "Tax or Reg Identifier",
+            "documentation": "Each occurrence of LE Tax Identifier provides one Tax or one Regulatory Identifier that has been assigned to one LE by one Tax Authority. Each Legal Entity may have 'N\" number of Tax Identifiers.",
+            "relationships": [
+                "LegalEntityCommon",
+                "TaxorRegulatoryAuthority",
+                "TaxIdentifierValue",
+                "TaxIDStartDate",
+                "TaxIDEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "Country",
+            "description": "Country",
+            "documentation": "Each occurrence of Country names and identifies one Country that is of interest or has one or more relationships with a Legal Entity.",
+            "relationships": [
+                "CountryName",
+                "CountryISOCode",
+                "OtherCountryInformationTBD",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "IndividualofInterest",
+            "description": "Individual of Interest",
+            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
+        },
+        {
+            "name": "InRegionStartDate",
+            "description": "In Region Start Date",
+            "documentation": "The earliest date this Country was a member of this Region.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "01-Jan-2010"
+        },
+        {
+            "name": "GeoLocationGPSCode",
+            "description": "Geo Location GPS Code",
+            "documentation": "The GPS co-ordinates for this address",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "21° 16' 674S"
+        },
+        {
+            "name": "FamilyName",
+            "description": "Family Name",
+            "documentation": "The Last name for this Individual.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Rubin"
+        },
+        {
+            "name": "AuthorityType",
+            "description": "Authority Type",
+            "documentation": "Indicates is this a \"TAX\" or \"REG\"regulator authority.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "TAX"
+        },
+        {
+            "name": "DocumentAuthor",
+            "description": "Document Author",
+            "documentation": "The name of the Author of the Document",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "UNKNOWN"
+        },
+        {
+            "name": "IdentifierCode",
+            "description": "Identifier Code",
+            "documentation": "An abbreviation of a specific Tax Identifer issued by a Taxing Authority.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "EIN"
+        },
+        {
+            "name": "RatingStartDate",
+            "description": "Rating Start Date",
+            "documentation": "The earliest or beginning of period date this Rating had effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "15-Feb-2012"
+        },
+        {
+            "name": "DocumentBriefDescription",
+            "description": "Document Brief Description",
+            "documentation": "A short synopsis of the Document contents.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Corporate Bylaws"
+        },
+        {
+            "name": "City",
+            "description": "City",
+            "documentation": "Free form text but could utilize/define domain of values",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "New York City"
+        },
+        {
+            "name": "GivenName",
+            "description": "Given Name",
+            "documentation": "The Given first name for this Individual.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Robert"
+        },
+        {
+            "name": "IndividualAddress",
+            "description": "Individual Address",
+            "documentation": "NA"
+        },
+        {
+            "name": "DataTypes",
+            "description": "Data Types",
+            "documentation": " A number of monetary units specified in a currency where the unit of currency is explicit or it may be implied."
+        },
+        {
+            "name": "AddressType",
+            "description": "Address Type",
+            "documentation": "A code that indicates if this address is POSTAL, EMAIL, WEBKLINK, PHONE NUMBER, or FAX NUMBER 1.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "POSTAL",
+             "characteristics" : {
+                "enumeration" : ["POSTAL","EMAIL","WEBLINK","PHONE NUMBER","FAX NUMBER"]
+            }
+        },
+        {
+            "name": "LEGroup",
+            "description": "LE Group",
+            "documentation": "Each occurrence of LE Group defines one group or collection consisting of one or more Legal Entities. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
+            "relationships": [
+                "LegalEntityGroupName",
+                "LegalEntityGroupType",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "PrimaryExchangeCode",
+            "description": "Primary Exchange Code",
+            "documentation": "Code that identifies the exchange on which the LE is listed.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "NYSE"
+        },
+        {
+            "name": "RatingOutlookValue",
+            "description": "Rating Outlook Value",
+            "documentation": "The value of the Outlook Status as provided by the Data Source",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "WebLink",
+            "description": "Web Link",
+            "documentation": "The URL of a web page contain address or address-related information.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "IndividualPrivacyCode",
+            "description": "Individual Privacy Code",
+            "documentation": "A code that indicates the extent that Individual information that is shared or accessible.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "LIMITED - NAME ONLY"
+        },
+        {
+            "name": "AddressRole",
+            "description": "Address Role",
+            "documentation": "Indicates how this address is being used in conjunction with this Legal Entity.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "CORP HEADQUARTER"
+        },
+        {
+            "name": "AddressBlockOverrideType",
+            "description": "Address Block Override Type",
+            "documentation": "Allows override of standard Address Block Type for this Address. If blank, standard Address Block Type code used to format address.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "StateofIncorporation",
+            "description": "State of Incorporation",
+            "documentation": "The state in which this LE was first incorporated.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "NYS"
+        },
+        {
+            "name": "LegalForm",
+            "description": "Legal Form",
+            "documentation": "The legal structure for the LE.  All developed countries have their own version of corporate law that defines the types of corporations that may be formed in their country anfd how they will be registered and regulated.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "US CORPORATION"
+        },
+        {
+            "name": "CountryRegionRelationship",
+            "description": "Country Region Relationship",
+            "documentation": "Each occurrence of Country Region Relationship identifies one Country that participates in one Geographic Region.",
+            "relationships": [
+                "Country",
+                "GeoRegion",
+                "InRegionStartDate",
+                "InRegionEndDate",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "PrimaryCurrency",
+            "description": "Primary Currency",
+            "documentation": "The ISO Currency Code for the Primary Currency in which the LE trades and/or transacts.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "USD"
+        },
+        {
+            "name": "DateTimeLastChanged",
+            "description": "Date/Time Last Changed",
+            "documentation": "The date and time data was last changed on this Entity.",
+            "extend": "io.dataset.atlas.types.DateTime",
+            "sampleValue": "01-Jan-2010"
+        },
+        {
+            "name": "LEDocument",
+            "description": "LE Document",
+            "documentation": "Each occurrence of LE Document references one piece of written, printed, or electronic matter pertaining to one Legal Entity. The Document may be stored in any number of different file formats (PDF, Word, Text, HTML, etc.) as indicated by the Document File Type attribute. The actual Document contents is provided via the Document Link ID attribute.",
+            "relationships": [
+                "LegalEntityCommon",
+                "DocumentBriefDescription",
+                "DocumentDate",
+                "DocumentAuthor",
+                "DocumentLinkID",
+                "DocumentFileType",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "DocumentFileType",
+            "description": "Document File Type",
+            "documentation": "A code that indicates the file or technical format in which the Document is stored.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "PDF"
+        },
+        {
+            "name": "LEBusinessHierarchyCategory",
+            "description": "LE Business Hierarchy Category",
+            "documentation": "Each occurrence of LE Business Hierarchy Category identifies, names, and defines one grouping or strata within a defined LE Business Hierarchy. Each Category represents one member of an ordered set that allows that category to be \"above,\" \"below,\" or \"at the same level\" as another Category member within that same Business Hierarchy.",
+            "relationships": [
+                "LEBusinessHierarchy",
+                "BusinessCategoryName",
+                "LEBusinessHierarchyCategory",
+                "HierarchyLevelNumber",
+                "BusinessHierarchySequenceNumber",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "DateTimeCreated",
+            "description": "Date/Time Created",
+            "documentation": "The date and time data was originally stored on this Entity.",
+            "extend": "io.dataset.atlas.types.DateTime",
+            "sampleValue": "01-Jan-2010"
+        },
+        {
+            "name": "FinancialInfoType",
+            "description": "Financial Info Type",
+            "documentation": "The specific type of Quantitative Data linked this LE.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "BALANCE SHEET",
+             "characteristics" : {
+                "enumeration" : ["BALANCE SHEET","OUTLOOK"]
+            }
+        },
+        {
+            "name": "ClassificationSet",
+            "description": "Classification Set",
+            "documentation": "Each occurrence of Classification Set provides one well-defined taxonomy, hierarchy, or listing structure for organizing and analyzing Legal Entities by grouping them into one or more Classification Categories. A Legal Entity may be categorized into any number of LE Classification Set/Categories via the LE Classification Category entity.",
+            "relationships": [
+                "ClassificationSetName",
+                "ClassificationSetAbbreviation",
+                "DataSource",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "AddressStatus",
+            "description": "Address Status",
+            "documentation": "A code that indicates if a particular Address is ACTIVE, PENDING, or CLOSED.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ACTIVE"
+        },
+        {
+            "name": "StateProvinceCanton",
+            "description": "State/Province/Canton",
+            "documentation": "Domain of values well defined e.g. US State Codes, Canada Province Codes, etc.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "New York"
+        },
+        {
+            "name": "LegalEntityIndicator",
+            "description": "Legal Entity Indicator",
+            "documentation": "Indicates if the LE has been assigned an ISO 17442 Legal Entity Identifier.",
+            "extend": "io.dataset.atlas.types.Boolean",
+            "sampleValue": "NO"
+        },
+        {
+            "name": "Keyword",
+            "description": "Keyword",
+            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
+        },
+        {
+            "name": "BusinessHierarchyName",
+            "description": "Business Hierarchy Name",
+            "documentation": "The text name of this Business Hierarchy.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "North America Organization"
+        },
+        {
+            "name": "AddressName",
+            "description": "Address Name",
+            "documentation": "Address or building name",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "Goldman Sacks Corporate"
+        },
+        {
+            "name": "LERelationshipType",
+            "description": "LE Relationship Type",
+            "documentation": "Each occurrence of LE Relationship Type name and defines a particular type of LE-to-LE Relationship that has well-defined meaning in the FIMOD. Relationships may be limited to two members only (one Legal Entity and its one Ultimate Parent) or any number of members (e.g., one Legal Entity and \"N\" other Legal Entities within a designated grouping).",
+            "relationships": [
+                "LERelationshipTypeName",
+                "RelationshipTypeNumberCode",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "DataFileCatalogEntry",
+            "description": "Data File Catalog Entry",
+            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
+        },
+        {
+            "name": "TaxorRegulatoryAuthority",
+            "description": "Tax or Regulatory Authority",
+            "documentation": "Each occurrence of Tax/Regulatory Authority identifies and names one Tax Authority or one Regulatory Agency within one Country (e.g. US) or within one Region (eg., EU) and designates one type of Tax or Regulatory Identifier issued by that authority.",
+            "relationships": [
+                "Country",
+                "GeoRegion",
+                "AuthorityType",
+                "AuthorityName",
+                "IdentifierName",
+                "IdentifierCode",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "CycleFrequency",
+            "description": "Cycle Frequency",
+            "documentation": "A code that can be used to recycle a Legal Entity Address on a recurring cycle. E.g., YEARLY for recurring Summer Address.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "IDEndDate",
+            "description": "ID End Date",
+            "documentation": "The last date that a LE Identifer was in effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "User",
+            "description": "User",
+            "documentation": "Each occurrence of User provides standard information applicable to an entity or person mantaining the data within the model",
+            "relationships": [
+                "UserName",
+                "UserEmail",
+                "DateTimeCreated"
+            ],
+            "features": {"io.dataset.atlas.site.hideNode": "true"}
+        },
+        {
+            "name": "RatingsTypeCode",
+            "description": "Ratings Type Code",
+            "documentation": "Allows different types of Rating from same agency. E.g., CURRENT, OUTLOOK, etc.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "CURR"
+        },
+        {
+            "name": "RatingEndDate",
+            "description": "Rating End Date",
+            "documentation": "The latest or end of period date this Rating had effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "DateTimeLastReviewed",
+            "description": "Date/Time Last Reviewed",
+            "documentation": "The date and time this LE relationship was formally reviewed.",
+            "extend": "io.dataset.atlas.types.DateTime",
+            "sampleValue": "15-Dec-2012"
+        },
+        {
+            "name": "FinancialInfoQuantitativeValue",
+            "description": "Financial Info Quantitative Value",
+            "documentation": "A numeric value of a particular type of LE Financial Information.",
+            "extend": "io.dataset.atlas.types.Number",
+            "sampleValue": "5.506747E8"
+        },
+        {
+            "name": "EventSequenceNumber",
+            "description": "Event Sequence Number",
+            "documentation": "When the same Corporate Event impacts more then one Legal Entity e.g., merger, split-up, etc., this number allows the individual LE's to be ordered into a designated sequence within that Event.",
+            "extend": "io.dataset.atlas.types.Number",
+            "sampleValue": "1.0"
+        },
+        {
+            "name": "TaxIDStartDate",
+            "description": "Tax ID Start Date",
+            "documentation": "The earliest date this Tax ID was assigned to this LE.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "01-Jan-1955"
+        },
+        {
+            "name": "PostalAddressLine1",
+            "description": "Postal Address - Line 1",
+            "documentation": "Free form text but typically contains first line of Postal Address.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "200 West Street"
+        },
+        {
+            "name": "LegalEntityRole",
+            "description": "Legal Entity Role",
+            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
+        },
+        {
+            "name": "PostalAddressLine6",
+            "description": "Postal Address - Line 6",
+            "documentation": "Supplemental Address Line.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "MembershipStartDate",
+            "description": "Membership Start Date",
+            "documentation": "The earliest or beginning of period date in which a LE was first a member of a LE Group.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "15-Feb-2012"
+        },
+        {
+            "name": "RelationshipTypeNumberCode",
+            "description": "Relationship Type Number Code",
+            "documentation": "Indicates how many LE's are allowed in this Relationship Type. 1",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "TWO",
+             "characteristics" : {
+                "enumeration" : ["TWO","UNLIMITED"]
+            }
+        },
+        {
+            "name": "ClassificationCategory",
+            "description": "Classification Category",
+            "documentation": "Each occurrence of Classification Category defines and name one well-defined grouping within a Classification Set for analyzing Legal Entities.",
+            "relationships": [
+                "ClassificationSet",
+                "ClassificationCategoryName",
+                "ClassificationCategoryCode",
+                "ClassificationCategory",
+                "ClassificationSequenceNumber",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "LastModifier"
+            ]
+        },
+        {
+            "name": "FinancialInfoTextValue",
+            "description": "Financial Info Text  Value",
+            "documentation": "A financial measure expressed in alphanumeric characters such as a Rating Code.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "OfficialBusinessName",
+            "description": "Official Business Name",
+            "documentation": "The Official Business Name, if different from the Legal Entity Name.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "<BLANK>"
+        },
+        {
+            "name": "CorporateEventEndDate",
+            "description": "Corporate Event End Date",
+            "documentation": "The latest or end of period date this Financial Info had effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "15-Jun-2012"
+        },
+        {
+            "name": "InRegionEndDate",
+            "description": "In Region End Date",
+            "documentation": "The last date this Country was a member of this Region.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        }
+    ]
 }

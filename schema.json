@@ -12,7 +12,8 @@
     },
     "contributors": [
         {
-            "name": "Predrag Dizdarevic"
+            "name": "Predrag Dizdarevic",
+            "company": "Element 22"
         },
         {
             "name": "Tom Charlton"
@@ -21,7 +22,8 @@
             "name": "John Carroll"
         },
         {
-            "name": "Garry Wright"
+            "name": "Garry Wright",
+            "company": "Dataset IO"
         },
         {
             "name": "Ken Price"
@@ -30,7 +32,9 @@
             "name": "Niel Siekerka"
         },
         {
-            "name": "Philip Dodds"
+            "name": "Philip Dodds",
+            "company": "Dataset IO",
+            "twitter": "philipdodds"
         },
         {
             "name": "Roger Newman"

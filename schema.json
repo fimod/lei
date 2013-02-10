@@ -1,24 +1,40 @@
 {
-    "atlasVersion": "1.1.0",
+    "atlasVersion": "2,0.0",
     "namespace": "org.fimod.lei",
     "name": "LegalEntityIdentifier",
-    "description": "Legal Entity Identifier",
     "documentation": "An association, corporation, partnership, proprietorship, trust, or individual that has legal standing in the eyes of the law. A legal entity has legal capacity to enter into agreements or contracts, assume obligations, incur and pay debts, sue and be sued in its own right, and to be held responsible for its actions.",
     "version": "1.4.0",
+    "imports": ["io.dataset.atlas.types.Types-2.0.0"],
     "organization": {
         "name": "fimod",
         "webSiteUrl": "http://fimod.org",
         "logoUrl": "classpath:/fimod-logo.png"
     },
     "contributors": [
-        {"name": "Predrag Dizdarevic"},
-        {"name": "Tom Charlton"},
-        {"name": "John Carroll"},
-        {"name": "Garry Wright"},
-        {"name": "Ken Price"},
-        {"name": "Niel Siekerka"},
-        {"name": "Philip Dodds"},
-        {"name": "Roger Newman"}
+        {
+            "name": "Predrag Dizdarevic"
+        },
+        {
+            "name": "Tom Charlton"
+        },
+        {
+            "name": "John Carroll"
+        },
+        {
+            "name": "Garry Wright"
+        },
+        {
+            "name": "Ken Price"
+        },
+        {
+            "name": "Niel Siekerka"
+        },
+        {
+            "name": "Philip Dodds"
+        },
+        {
+            "name": "Roger Newman"
+        }
     ],
     "license": {
         "name": "Apache Software License v2.0",
@@ -41,24 +57,6 @@
             "documentation": "The Name or standard abbreviation for this Classification Set.",
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "Global Industry Classification Standard"
-        },
-        {
-            "name": "CountryofDomicile",
-            "description": "Country of Domicile",
-            "documentation": "The Country in which this Legal Entity was originally established.",
-            "relationships": ["Country"]
-        },
-        {
-            "name": "CountryofIncorporation",
-            "description": "Country of Domicile",
-            "documentation": "The Country in which the LE files its registration.",
-            "relationships": ["Country"]
-        },
-        {
-            "name": "CountryofRisk",
-            "description": "Country of Risk",
-            "documentation": "The Country that exposes the LE to the most serious financial risk, as contrasted to the Country in which the LE was originally located or founded.",
-            "relationships": ["Country"]
         },
         {
             "name": "EventStatus",
@@ -127,12 +125,24 @@
             "name": "LegalEntityType",
             "description": "Legal Entity Type",
             "documentation": "A code that distinguishes one type of Legal Entity from another. Each separate Legal Entity Type has different data attribute and/or data relationship requirements.",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "BUSINESS"
+                    },
+                    {
+                        "value": "INDIVIDUAL"
+                    },
+                    {
+                        "value": "OTHER"
+                    },
+                    {
+                        "value": "QUASI-LE"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "BUSINESS",
-            "characteristics" : {
-                "enumeration" : ["BUSINESS","INDIVIDUAL","OTHER","QUASI-LE"]
-
-            }
+            "sampleValue": "BUSINESS"
         },
         {
             "name": "OtherCountryInformationTBD",
@@ -145,8 +155,8 @@
             "description": "LE Address",
             "documentation": "Each occurrence of Legal Entity Address provides one Address for one Legal Entity for a designated period of time.  Each Legal Entity may have any number of Addresses which may be further qualified by the Address Role attribute.  The same Address may be used for any number of Individuals and/or Legal Entities.  The Individual  Address Start and End Date in conjunction with the Cycle Frequency attribute allows an address to be used for a specified period of time and then be repeated on a designated cycle, such as for a summer to be used during the summer months only on a yearly basis.",
             "relationships": [
-                "LegalEntityCommon",
-                "Address",
+                "LegalEntityCommon[..1](Legal Entity can be contacted at Address)",
+                "Address[..1](Address issued as Legal Entity Address)",
                 "AddressRole",
                 "AddressBlockOverrideType",
                 "LEAddressStartDate",
@@ -155,18 +165,31 @@
                 "AddressStatus",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
             "name": "IdentifierStatus",
             "description": "Identifier Status",
             "documentation": "Indicates the state of the LE Identifier at the Source 2",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "PENDING"
+                    },
+                    {
+                        "value": "ACTIVE"
+                    },
+                    {
+                        "value": "REASSIGNED"
+                    },
+                    {
+                        "value": "CLOSED"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "ACTIVE",
-            "characteristics" : {
-                "enumeration" : ["PENDING","ACTIVE","REASSIGNED","CLOSED"]
-            }
+            "sampleValue": "ACTIVE"
         },
         {
             "name": "IDStartDate",
@@ -185,7 +208,7 @@
                 "RegionSpan",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -207,56 +230,32 @@
             "description": "LE to LE Relationship",
             "documentation": "Each occurrence of LE to LE Relationship defines a pair of two Legal Entities that are related to each other.",
             "relationships": [
-                "LERelationshipType",
+                "LERelationshipType[..1](Legal Entity Relationship Type defines LE to LE relationship)",
                 "RelationshipRole",
-                "ParentLegalEntityCommon",
-                "ChildLegalEntityCommon",
+                "ParentLegalEntityCommon->LegalEntityCommon[1..1](Legal Entity is parent to another Legal Entity)",
+                "ChildLegalEntityCommon->LegalEntityCommon[1..1](Legal Entity is child of another Legal Entity)",
                 "OwnershipPercentage",
-                "LEAddress",
+                "LEAddress[0..1]",
                 "RelationshipStartDate",
                 "RelationshipEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier",
+                "LastChangedUser->User[..1]",
                 "DateTimeLastReviewed",
-                "Reviewer"
+                "ReviewerUser->User"
             ]
-        },
-        {
-            "name": "ParentLegalEntityCommon",
-            "description": "A parent Legal Entity",
-            "documentation": "The Legal Entity that acts as the Parent or Primary in this Relationship.",
-            "relationships": ["LegalEntityCommon"]
-        },
-        {
-            "name": "ChildLegalEntityCommon",
-            "description": "A child Legal Entity",
-            "documentation": "The Legal Entity that acts as the Child or Secondary in this Relationship.",
-            "relationships": ["LegalEntityCommon"]
-        },
-        {
-            "name": "Reviewer",
-            "description": "Reviewer User Id",
-            "documentation": "The User who last reviewed this.",
-            "relationships": ["User"]
-        },
-        {
-            "name": "LastModifier",
-            "description": "Last Changed User Id",
-            "documentation": "The User who last changed data on this Entity.",
-            "relationships": ["User"]
         },
         {
             "name": "LECorporateEvent",
             "description": "LE Corporate Event",
             "documentation": "Each occurrence of LE Corporate Event defines one Business Legal Entity effected by one Corporate Event. Each Corporate Event may impact one or multiple Business Legal Entities (e.g., merger, acquistion, etc.). If the Corporate Event impacts \"n\" number of LE's, then there will be \"n\" occurrence of LE Corporate Event, one for each Business LE impacted by the event.  ",
             "relationships": [
-                "CorporateEvent",
-                "LegalEntityCommon",
+                "CorporateEvent[..1](Corporate event is comprised of LE corporate events)",
+                "LegalEntityBusiness[..1](Legal Entity is impacted by Corporate events)",
                 "EventSequenceNumber",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -313,13 +312,13 @@
             "description": "LE Classification Category",
             "documentation": "Each occurrence of Classification Category identifies one Legal Entity that has been categorized in a Category Grouping within a Classification Set.",
             "relationships": [
-                "LegalEntityCommon",
-                "ClassificationCategory",
+                "LegalEntityCommon[..1](Legal Entity is categorized as Legal Entity Classification Category)",
+                "ClassificationCategory[..1](Classification category categorizes LE Classification categories)",
                 "InCategoryStartDate",
                 "InCategoryEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -396,7 +395,7 @@
             "description": "Legal Entity - Individual",
             "documentation": "Each occurrence of Legal Entity - Individual identifies, names and supplies indicative information regarding one Natural Person. Each Individual is a human being as contrasted to a Legal Person, such as a Corporation having legal standing.",
             "relationships": [
-                "LegalEntityCommon",
+                "LegalEntityCommon[1..1](Legal Entity is Individual)",
                 "IndividualFullName",
                 "GivenName",
                 "MiddleName",
@@ -409,7 +408,7 @@
                 "TaxorRegulatoryAuthority",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -430,11 +429,24 @@
             "name": "ClassificationSetAbbreviation",
             "description": "Classification Set Abbreviation",
             "documentation": "A short name or abbreviation for this Classification Set 2.",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "NOGA208"
+                    },
+                    {
+                        "value": "GICS"
+                    },
+                    {
+                        "value": "GICS2"
+                    },
+                    {
+                        "value": "NACS"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "GICS",
-            "characteristics" : {
-                "enumeration" : ["NOGA208","GICS","GICS2","NACS"]
-            }
+            "sampleValue": "GICS"
         },
         {
             "name": "GeoRegionType",
@@ -458,6 +470,12 @@
             "sampleValue": "0.6525"
         },
         {
+            "name": "DataSourceEventId",
+            "description": "Data Source Event Id",
+            "documentation": "The ID assigned or provided by the Data Source to uniquely identify this Corporate Event.",
+            "extend": "io.dataset.atlas.types.String"
+        },
+        {
             "name": "LEBusinessHierarchy",
             "description": "LE Business Hierarchy",
             "documentation": "NA",
@@ -467,7 +485,7 @@
                 "BusinessHierarchyType",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -476,7 +494,7 @@
             "documentation": "Each occurrence of Corporate Event identifies and provides summary information regarding one action, event, or activity occuring in the past or scheduled to occur in the future that has significant effect on one Business Legal Entity (e.g., Shareholder Meeting) or on multiple Business Legal Entities (e.g., merger or acquistion) as provided by one Data Source. The full terms, conditions, and detail informaton regarding the Corporate Event itself are not stored in Legal Entity Data Domain but are instead stored separately outside the domain space and are referenced by the Corporate Event ID attribute. The specific one or multiple Business LEs impacted by the Corporate Event are identified by separate occurrences of LE Corporate Event entity.",
             "relationships": [
                 "DataSource",
-                "DataSourceEvent",
+                "DataSourceEventId",
                 "EventType",
                 "CorporateActionDescription",
                 "CorporateEventLinkID",
@@ -485,7 +503,7 @@
                 "CorporateEventEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -539,14 +557,14 @@
             "description": "LE in Country",
             "documentation": "Each occurrence of Legal Entry in Country identifies one Country that is related to one Legal Entity. The LE to Country Relationship Type Code indicates the type of relationship.",
             "relationships": [
-                "Country",
-                "LegalEntityCommon",
+                "Country[..1](Legal Entity is located in Country)",
+                "LegalEntityCommon[..1](Country is location for LE in Country)",
                 "LEtoCountryRelationshipType",
                 "StartofCountryRelationshipDate",
                 "EndofCountryRelationshipDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -554,9 +572,9 @@
             "description": "LE Identifier",
             "documentation": "Each occurrence of LE Identifier contains one number, series of alphanumeric characters, or similar unique code provided by a Data Source that is used to identify one Legal Entity.  There may be multiple different LE Identifiers for each Legal Entity. Each different LE Identifier has a LE Identifier Type attribute that specifies the organization or body that establishes, assigns, and maintains that particular Identifier type.",
             "relationships": [
-                "LegalEntityCommon",
+                "LegalEntityCommon[..1]",
                 "LEIdentifierType",
-                "DataSource",
+                "DataSource[..1]",
                 "LEIdentifierValue",
                 "AlternateNameAtSource",
                 "IDStartDate",
@@ -564,7 +582,7 @@
                 "IdentifierStatus",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -600,17 +618,17 @@
             "description": "Legal Entity - Business",
             "documentation": "Each occurrence of Legal Entity - Business provides reference information specific to a corporation, partnership, proprietorship, trust, fund, or similar organization that has legal standing in the eyes of the law. ",
             "relationships": [
-                "LegalEntityCommon",
-                "LEBusinessHierarchy",
+                "LegalEntityCommon[1..1]",
+                "LEBusinessHierarchy[1..]",
                 "OfficialBusinessName",
                 "BusinessType",
                 "LegalForm",
-                "CountryofIncorporation",
-                "StateofIncorporation",
-                "CountryofRisk",
+                "CountryofIncorporation->Country[..1]",
+                "StateofIncorporation[..1]",
+                "CountryofRisk->Country[..1]",
                 "RegistrationDate",
                 "RegistrationNumber",
-                "TaxorRegulatoryAuthority",
+                "TaxorRegulatoryAuthority[..1]",
                 "FormationDate",
                 "DissolutionDate",
                 "FiscalYearEnd",
@@ -624,7 +642,7 @@
                 "SovereignOwnershipIndicator",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -729,13 +747,13 @@
             "description": "LE Group Member",
             "documentation": "Each occurrence of LE Group Member defines one Legal Entity that is a member of one LE Group. Each individual Legal Entity may belong to any number of different LE Groups. Conversely, each LE Group may have any number of Legal Entities as its members.",
             "relationships": [
-                "LEGroup",
-                "LegalEntityCommon",
+                "LEGroup[..1]",
+                "LegalEntityCommon[..1]",
                 "MembershipStartDate",
                 "MembershipEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -797,11 +815,66 @@
             "name": "LEIdentifierType",
             "description": "LE Identifier Type",
             "documentation": "The type or genre of a Legal Entity Identifier. ",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "Avox"
+                    },
+                    {
+                        "value": "BASECUSIP"
+                    },
+                    {
+                        "value": "Bloomberg ID"
+                    },
+                    {
+                        "value": "DCC Clearing Number"
+                    },
+                    {
+                        "value": "DUNS"
+                    },
+                    {
+                        "value": "External LEM ID"
+                    },
+                    {
+                        "value": "FCC Registration Number"
+                    },
+                    {
+                        "value": "Fitch"
+                    },
+                    {
+                        "value": "Internal LEM ID"
+                    },
+                    {
+                        "value": "LSDB ID"
+                    },
+                    {
+                        "value": "LSE Member Number"
+                    },
+                    {
+                        "value": "Moodys"
+                    },
+                    {
+                        "value": "Reuters"
+                    },
+                    {
+                        "value": "S&P"
+                    },
+                    {
+                        "value": "SWIFT BIC CODE"
+                    },
+                    {
+                        "value": "Telekurs ID"
+                    },
+                    {
+                        "value": "URL - Web Address"
+                    },
+                    {
+                        "value": "Vendor LEM ID"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "TICKER",
-            "characteristics" : {
-                "enumeration" : ["Avox","BASECUSIP","Bloomberg ID","DCC Clearing Number","DUNS","External LEM ID","FCC Registration Number","Fitch","Internal LEM ID","LSDB ID","LSE Member Number","Moodys","Reuters","S&P","SWIFT BIC CODE","Telekurs ID","URL - Web Address","Vendor LEM ID"]
-            }
+            "sampleValue": "TICKER"
         },
         {
             "name": "DataManagementRoles",
@@ -833,6 +906,7 @@
             "name": "RegionSpan",
             "description": "Region Span",
             "documentation": "Desigates if this Region is: \n    \"WITHIN\" one Cournty \n    \"ACROSS\" multiple Countries",
+            "extend": "io.dataset.atlas.types.String",
             "sampleValue": ""
         },
         {
@@ -867,8 +941,8 @@
             "description": "Financial Info",
             "documentation": "Each occurrence of LE Financial Information provides time sensitive information about the monetary value or condition of a Legal Entity from a named Data Source. The information may consist of quantitative financial results, text information, or a web link to expanded information regarding one topic. The Financial Information Type and Sub Type attributes define the specific type of information provided in that occurrence.",
             "relationships": [
-                "LegalEntityCommon",
-                "DataSource",
+                "LegalEntityCommon[..1]",
+                "DataSource[..1]",
                 "FinancialInfoType",
                 "FinancialInfoSubType",
                 "FinancialInfoQuantitativeValue",
@@ -879,7 +953,7 @@
                 "FinancialInfoEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -933,16 +1007,16 @@
                 "LegalEntitySubType",
                 "PrimaryCurrency",
                 "PrimaryTaxID",
-                "CountryofDomicile",
+                "CountryofDomicile->Country[..1]",
                 "StateofDomicile",
-                "CountryofRisk",
+                "CountryofRisk->Country[..1]",
                 "LegalEntityIndicator",
                 "LEStatus",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier",
+                "LastChangedUser->User[..1]",
                 "DateTimeLastReviewed",
-                "Reviewer"
+                "ReviewerUser->User[..1]"
             ]
         },
         {
@@ -976,10 +1050,23 @@
             "name": "LegalEntitySubType",
             "description": "Legal Entity Sub Type",
             "documentation": "The sub-type of entity determines reporting requirements and hierarchy methodologies to be used",
-            "extend": "io.dataset.atlas.types.String",
-            "characteristics" : {
-                "enumeration" : ["Branch","Fund Family","Trust","Special Purpose Vehicle"]
-            }
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "Branch"
+                    },
+                    {
+                        "value": "Fund Family"
+                    },
+                    {
+                        "value": "Trust"
+                    },
+                    {
+                        "value": "Special Purpose Vehicle"
+                    }
+                ]
+            },
+            "extend": "io.dataset.atlas.types.String"
         },
         {
             "name": "LERatings",
@@ -998,7 +1085,7 @@
                 "RatingEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1011,11 +1098,27 @@
             "name": "ListingStatus",
             "description": "Listing Status",
             "documentation": "A code that indicates if a Legal Entity is listed on any organized exchange as provided by Bloomberg.  This is the Bloomberg derived security status.  Based on the security's activity messages from pricing sources such as exchanges and marketplaces, Bloomberg creates five simple security statuses.  They are the following: AUCT - Security is in an auction phase.  Market participants are allowed to enter orders and quotes, but no trades are executed in the orderbook until the auction is complete.  HALT - Trading activity in the security is halted.  TRAD - Security is actively trading.  CLOS - Security has closed trading for the day.  OUT - Security is trading, but it is an off-hours period. ",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "AUCT"
+                    },
+                    {
+                        "value": "HALT"
+                    },
+                    {
+                        "value": "TRAD"
+                    },
+                    {
+                        "value": "CLOS"
+                    },
+                    {
+                        "value": "OUT"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "LISTED",
-            "characteristics" : {
-                "enumeration" : ["AUCT","HALT","TRAD","CLOS","OUT"]
-            }
+            "sampleValue": "LISTED"
         },
         {
             "name": "BusinessHierarchyDescription",
@@ -1030,10 +1133,10 @@
             "documentation": "Each occurrence of Data Source names and identifies an orginating source of information or  data utilized within the FIMOD Legal Entity Data Model.",
             "relationships": [
                 "DataSourceName",
-                "DataSourceLEKeyID",
+                "DataSourceLEKeyID[0..1]",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1086,7 +1189,7 @@
                 "WebLink",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1094,14 +1197,14 @@
             "description": "Tax or Reg Identifier",
             "documentation": "Each occurrence of LE Tax Identifier provides one Tax or one Regulatory Identifier that has been assigned to one LE by one Tax Authority. Each Legal Entity may have 'N\" number of Tax Identifiers.",
             "relationships": [
-                "LegalEntityCommon",
-                "TaxorRegulatoryAuthority",
+                "LegalEntityCommon[..1]",
+                "TaxorRegulatoryAuthority[..1]",
                 "TaxIdentifierValue",
                 "TaxIDStartDate",
                 "TaxIDEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1114,7 +1217,7 @@
                 "OtherCountryInformationTBD",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1206,11 +1309,27 @@
             "name": "AddressType",
             "description": "Address Type",
             "documentation": "A code that indicates if this address is POSTAL, EMAIL, WEBKLINK, PHONE NUMBER, or FAX NUMBER 1.",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "POSTAL"
+                    },
+                    {
+                        "value": "EMAIL"
+                    },
+                    {
+                        "value": "WEBLINK"
+                    },
+                    {
+                        "value": "PHONE NUMBER"
+                    },
+                    {
+                        "value": "FAX NUMBER"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "POSTAL",
-             "characteristics" : {
-                "enumeration" : ["POSTAL","EMAIL","WEBLINK","PHONE NUMBER","FAX NUMBER"]
-            }
+            "sampleValue": "POSTAL"
         },
         {
             "name": "LEGroup",
@@ -1221,7 +1340,7 @@
                 "LegalEntityGroupType",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1285,13 +1404,13 @@
             "description": "Country Region Relationship",
             "documentation": "Each occurrence of Country Region Relationship identifies one Country that participates in one Geographic Region.",
             "relationships": [
-                "Country",
-                "GeoRegion",
+                "Country[..1]",
+                "GeoRegion[..1]",
                 "InRegionStartDate",
                 "InRegionEndDate",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1313,7 +1432,7 @@
             "description": "LE Document",
             "documentation": "Each occurrence of LE Document references one piece of written, printed, or electronic matter pertaining to one Legal Entity. The Document may be stored in any number of different file formats (PDF, Word, Text, HTML, etc.) as indicated by the Document File Type attribute. The actual Document contents is provided via the Document Link ID attribute.",
             "relationships": [
-                "LegalEntityCommon",
+                "LegalEntityCommon[..1]",
                 "DocumentBriefDescription",
                 "DocumentDate",
                 "DocumentAuthor",
@@ -1321,7 +1440,7 @@
                 "DocumentFileType",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1336,14 +1455,14 @@
             "description": "LE Business Hierarchy Category",
             "documentation": "Each occurrence of LE Business Hierarchy Category identifies, names, and defines one grouping or strata within a defined LE Business Hierarchy. Each Category represents one member of an ordered set that allows that category to be \"above,\" \"below,\" or \"at the same level\" as another Category member within that same Business Hierarchy.",
             "relationships": [
-                "LEBusinessHierarchy",
+                "LEBusinessHierarchy[..1]",
                 "BusinessCategoryName",
-                "LEBusinessHierarchyCategory",
+                "ParentLEBusinessHierarchyCategory->LEBusinessHierarchyCategory",
                 "HierarchyLevelNumber",
                 "BusinessHierarchySequenceNumber",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1357,11 +1476,18 @@
             "name": "FinancialInfoType",
             "description": "Financial Info Type",
             "documentation": "The specific type of Quantitative Data linked this LE.",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "BALANCE SHEET"
+                    },
+                    {
+                        "value": "OUTLOOK"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "BALANCE SHEET",
-             "characteristics" : {
-                "enumeration" : ["BALANCE SHEET","OUTLOOK"]
-            }
+            "sampleValue": "BALANCE SHEET"
         },
         {
             "name": "ClassificationSet",
@@ -1370,10 +1496,10 @@
             "relationships": [
                 "ClassificationSetName",
                 "ClassificationSetAbbreviation",
-                "DataSource",
+                "DataSource[..1]",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1425,7 +1551,7 @@
                 "RelationshipTypeNumberCode",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1438,15 +1564,15 @@
             "description": "Tax or Regulatory Authority",
             "documentation": "Each occurrence of Tax/Regulatory Authority identifies and names one Tax Authority or one Regulatory Agency within one Country (e.g. US) or within one Region (eg., EU) and designates one type of Tax or Regulatory Identifier issued by that authority.",
             "relationships": [
-                "Country",
-                "GeoRegion",
+                "Country[..1]",
+                "GeoRegion[..1]",
                 "AuthorityType",
                 "AuthorityName",
                 "IdentifierName",
                 "IdentifierCode",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {
@@ -1466,13 +1592,15 @@
         {
             "name": "User",
             "description": "User",
-            "documentation": "Each occurrence of User provides standard information applicable to an entity or person mantaining the data within the model",
+            "documentation": "Each occurrence of User provides standard information applicable to an entity or person maintaining the data within the model",
             "relationships": [
                 "UserName",
                 "UserEmail",
                 "DateTimeCreated"
             ],
-            "features": {"io.dataset.atlas.site.hideNode": "true"}
+            "features": {
+                "io.dataset.atlas.site.hideNode": "true"
+            }
         },
         {
             "name": "RatingsTypeCode",
@@ -1546,25 +1674,32 @@
             "name": "RelationshipTypeNumberCode",
             "description": "Relationship Type Number Code",
             "documentation": "Indicates how many LE's are allowed in this Relationship Type. 1",
+            "characteristics": {
+                "enumeration": [
+                    {
+                        "value": "TWO"
+                    },
+                    {
+                        "value": "UNLIMITED"
+                    }
+                ]
+            },
             "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "TWO",
-             "characteristics" : {
-                "enumeration" : ["TWO","UNLIMITED"]
-            }
+            "sampleValue": "TWO"
         },
         {
             "name": "ClassificationCategory",
             "description": "Classification Category",
             "documentation": "Each occurrence of Classification Category defines and name one well-defined grouping within a Classification Set for analyzing Legal Entities.",
             "relationships": [
-                "ClassificationSet",
+                "ClassificationSet[..1]",
                 "ClassificationCategoryName",
                 "ClassificationCategoryCode",
-                "ClassificationCategory",
+                "ParentClassificationCategory->ClassificationCategory[..1]",
                 "ClassificationSequenceNumber",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
-                "LastModifier"
+                "LastChangedUser->User[..1]"
             ]
         },
         {

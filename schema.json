@@ -1,44 +1,24 @@
 {
-    "atlasVersion": "2,0.0",
+    "atlasVersion": "2.0.0",
     "namespace": "org.fimod.lei",
     "name": "LegalEntityIdentifier",
+    "imports": ["io.dataset.atlas.types.Types-2.0.0"],
     "documentation": "An association, corporation, partnership, proprietorship, trust, or individual that has legal standing in the eyes of the law. A legal entity has legal capacity to enter into agreements or contracts, assume obligations, incur and pay debts, sue and be sued in its own right, and to be held responsible for its actions.",
     "version": "1.4.0",
-    "imports": ["io.dataset.atlas.types.Types-2.0.0"],
     "organization": {
         "name": "fimod",
         "webSiteUrl": "http://fimod.org",
         "logoUrl": "classpath:/fimod-logo.png"
     },
     "contributors": [
-        {
-            "name": "Predrag Dizdarevic",
-            "company": "Element 22"
-        },
-        {
-            "name": "Tom Charlton"
-        },
-        {
-            "name": "John Carroll"
-        },
-        {
-            "name": "Garry Wright",
-            "company": "Dataset IO"
-        },
-        {
-            "name": "Ken Price"
-        },
-        {
-            "name": "Niel Siekerka"
-        },
-        {
-            "name": "Philip Dodds",
-            "company": "Dataset IO",
-            "twitter": "philipdodds"
-        },
-        {
-            "name": "Roger Newman"
-        }
+        {"name": "Predrag Dizdarevic"},
+        {"name": "Tom Charlton"},
+        {"name": "John Carroll"},
+        {"name": "Garry Wright"},
+        {"name": "Ken Price"},
+        {"name": "Niel Siekerka"},
+        {"name": "Philip Dodds"},
+        {"name": "Roger Newman"}
     ],
     "license": {
         "name": "Apache Software License v2.0",
@@ -129,22 +109,12 @@
             "name": "LegalEntityType",
             "description": "Legal Entity Type",
             "documentation": "A code that distinguishes one type of Legal Entity from another. Each separate Legal Entity Type has different data attribute and/or data relationship requirements.",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "BUSINESS"
-                    },
-                    {
-                        "value": "INDIVIDUAL"
-                    },
-                    {
-                        "value": "OTHER"
-                    },
-                    {
-                        "value": "QUASI-LE"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "BUSINESS"},
+                {"value": "INDIVIDUAL"},
+                {"value": "OTHER"},
+                {"value": "QUASI-LE"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "BUSINESS"
         },
@@ -176,22 +146,12 @@
             "name": "IdentifierStatus",
             "description": "Identifier Status",
             "documentation": "Indicates the state of the LE Identifier at the Source 2",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "PENDING"
-                    },
-                    {
-                        "value": "ACTIVE"
-                    },
-                    {
-                        "value": "REASSIGNED"
-                    },
-                    {
-                        "value": "CLOSED"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "PENDING"},
+                {"value": "ACTIVE"},
+                {"value": "REASSIGNED"},
+                {"value": "CLOSED"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "ACTIVE"
         },
@@ -433,22 +393,12 @@
             "name": "ClassificationSetAbbreviation",
             "description": "Classification Set Abbreviation",
             "documentation": "A short name or abbreviation for this Classification Set 2.",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "NOGA208"
-                    },
-                    {
-                        "value": "GICS"
-                    },
-                    {
-                        "value": "GICS2"
-                    },
-                    {
-                        "value": "NACS"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "NOGA208"},
+                {"value": "GICS"},
+                {"value": "GICS2"},
+                {"value": "NACS"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "GICS"
         },
@@ -540,7 +490,78 @@
         {
             "name": "LEAlternateName",
             "description": "LE Alternate Name",
-            "documentation": "Each occurrence of LE Alternate Name provides an additional name or alias in a designated language provided by a Data Source by which a Legal Entity is known.  Every LE has one Legal Entity Name attribute that is stored on the Legal Entity and may have \"n\" number of additional alternate names."
+            "documentation": "Each occurrence of LE Alternate Name provides an additional name or alias in a designated language provided by a Data Source by which a Legal Entity is known.  Every LE has one Legal Entity Name attribute that is stored on the Legal Entity and may have \"n\" number of additional alternate names.",
+            "relationships": [
+                "LegalEntityCommon[..1]",
+                "DataSource[..1]",
+                "AlternateNameType",
+                "LEAlternateNameText",
+                "LEAlternateNameImage",
+                "LanguageofNameCode",
+                "LEIdentifier[..1]",
+                "LEAltNameStartDate",
+                "LEAltNameEndDate",
+                "LEAltNameStatus",
+                "DateTimeCreated",
+                "DateTimeLastChanged",
+                "User"
+            ]
+        },
+        {
+            "name": "AlternateNameType",
+            "description": "Alternate Name Type",
+            "documentation": "The name or term used for the entire class of this particular type or genre of Alternative Name 1",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "SHORT NAME",
+            "characteristics": {"enumeration": [
+                {"value": "Avox Issuer Name"},
+                {"value": "Avox Issuer Name"},
+                {"value": "Bloomberg ID"},
+                {"value": "ICB Issuer Name"},
+                {"value": "Moody's Name"},
+                {"value": "Reuters Issuer Name"},
+                {"value": "S&P Name"}
+            ]}
+        },
+        {
+            "name": "LEAlternateNameText",
+            "description": "Alternate Name Text",
+            "documentation": "An alternate, text name for a Legal Entity (in contrast to it's 0fficial Legal Name which is stored on the LE Entity itself).",
+            "extend": "io.dataset.atlas.types.String"
+        },
+        {
+            "name": "LEAlternateNameImage",
+            "description": "LE Alternate Name Image",
+            "documentation": "A picture or image of a Legal Entity Alternate Name, for cases where the text character set for the Language of the Name is not supported.",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "LEAltNameEndDate",
+            "description": "LE Alt Name End Date",
+            "documentation": "The last date on which an Alternate Name is in effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "\"--\""
+        },
+        {
+            "name": "LEAltNameStartDate",
+            "description": "LE Alt Name Start Date",
+            "documentation": "The first date on which an Alternate Name was first in effect.",
+            "extend": "io.dataset.atlas.types.Date",
+            "sampleValue": "15-Jan-2005"
+        },
+        {
+            "name": "LanguageofNameCode",
+            "description": "Language of Name Code",
+            "documentation": "A code indicating the character set of the language used for an Alternate Legal Entity Name.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ENGLISH"
+        },
+        {
+            "name": "LEAltNameStatus",
+            "description": "LE Alt Name Status",
+            "documentation": "The state or status of this name regardings it's use.",
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "ACTIVE"
         },
         {
             "name": "LegalEntityGroupName",
@@ -819,71 +840,28 @@
             "name": "LEIdentifierType",
             "description": "LE Identifier Type",
             "documentation": "The type or genre of a Legal Entity Identifier. ",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "Avox"
-                    },
-                    {
-                        "value": "BASECUSIP"
-                    },
-                    {
-                        "value": "Bloomberg ID"
-                    },
-                    {
-                        "value": "DCC Clearing Number"
-                    },
-                    {
-                        "value": "DUNS"
-                    },
-                    {
-                        "value": "External LEM ID"
-                    },
-                    {
-                        "value": "FCC Registration Number"
-                    },
-                    {
-                        "value": "Fitch"
-                    },
-                    {
-                        "value": "Internal LEM ID"
-                    },
-                    {
-                        "value": "LSDB ID"
-                    },
-                    {
-                        "value": "LSE Member Number"
-                    },
-                    {
-                        "value": "Moodys"
-                    },
-                    {
-                        "value": "Reuters"
-                    },
-                    {
-                        "value": "S&P"
-                    },
-                    {
-                        "value": "SWIFT BIC CODE"
-                    },
-                    {
-                        "value": "Telekurs ID"
-                    },
-                    {
-                        "value": "URL - Web Address"
-                    },
-                    {
-                        "value": "Vendor LEM ID"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "Avox"},
+                {"value": "BASECUSIP"},
+                {"value": "Bloomberg ID"},
+                {"value": "DCC Clearing Number"},
+                {"value": "DUNS"},
+                {"value": "External LEM ID"},
+                {"value": "FCC Registration Number"},
+                {"value": "Fitch"},
+                {"value": "Internal LEM ID"},
+                {"value": "LSDB ID"},
+                {"value": "LSE Member Number"},
+                {"value": "Moodys"},
+                {"value": "Reuters"},
+                {"value": "S&P"},
+                {"value": "SWIFT BIC CODE"},
+                {"value": "Telekurs ID"},
+                {"value": "URL - Web Address"},
+                {"value": "Vendor LEM ID"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "TICKER"
-        },
-        {
-            "name": "DataManagementRoles",
-            "description": "Data Management Roles",
-            "documentation": "NA"
         },
         {
             "name": "LEStatus",
@@ -1054,22 +1032,12 @@
             "name": "LegalEntitySubType",
             "description": "Legal Entity Sub Type",
             "documentation": "The sub-type of entity determines reporting requirements and hierarchy methodologies to be used",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "Branch"
-                    },
-                    {
-                        "value": "Fund Family"
-                    },
-                    {
-                        "value": "Trust"
-                    },
-                    {
-                        "value": "Special Purpose Vehicle"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "Branch"},
+                {"value": "Fund Family"},
+                {"value": "Trust"},
+                {"value": "Special Purpose Vehicle"}
+            ]},
             "extend": "io.dataset.atlas.types.String"
         },
         {
@@ -1102,25 +1070,13 @@
             "name": "ListingStatus",
             "description": "Listing Status",
             "documentation": "A code that indicates if a Legal Entity is listed on any organized exchange as provided by Bloomberg.  This is the Bloomberg derived security status.  Based on the security's activity messages from pricing sources such as exchanges and marketplaces, Bloomberg creates five simple security statuses.  They are the following: AUCT - Security is in an auction phase.  Market participants are allowed to enter orders and quotes, but no trades are executed in the orderbook until the auction is complete.  HALT - Trading activity in the security is halted.  TRAD - Security is actively trading.  CLOS - Security has closed trading for the day.  OUT - Security is trading, but it is an off-hours period. ",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "AUCT"
-                    },
-                    {
-                        "value": "HALT"
-                    },
-                    {
-                        "value": "TRAD"
-                    },
-                    {
-                        "value": "CLOS"
-                    },
-                    {
-                        "value": "OUT"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "AUCT"},
+                {"value": "HALT"},
+                {"value": "TRAD"},
+                {"value": "CLOS"},
+                {"value": "OUT"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "LISTED"
         },
@@ -1225,11 +1181,6 @@
             ]
         },
         {
-            "name": "IndividualofInterest",
-            "description": "Individual of Interest",
-            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-        },
-        {
             "name": "InRegionStartDate",
             "description": "In Region Start Date",
             "documentation": "The earliest date this Country was a member of this Region.",
@@ -1300,38 +1251,16 @@
             "sampleValue": "Robert"
         },
         {
-            "name": "IndividualAddress",
-            "description": "Individual Address",
-            "documentation": "NA"
-        },
-        {
-            "name": "DataTypes",
-            "description": "Data Types",
-            "documentation": " A number of monetary units specified in a currency where the unit of currency is explicit or it may be implied."
-        },
-        {
             "name": "AddressType",
             "description": "Address Type",
             "documentation": "A code that indicates if this address is POSTAL, EMAIL, WEBKLINK, PHONE NUMBER, or FAX NUMBER 1.",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "POSTAL"
-                    },
-                    {
-                        "value": "EMAIL"
-                    },
-                    {
-                        "value": "WEBLINK"
-                    },
-                    {
-                        "value": "PHONE NUMBER"
-                    },
-                    {
-                        "value": "FAX NUMBER"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "POSTAL"},
+                {"value": "EMAIL"},
+                {"value": "WEBLINK"},
+                {"value": "PHONE NUMBER"},
+                {"value": "FAX NUMBER"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "POSTAL"
         },
@@ -1480,16 +1409,10 @@
             "name": "FinancialInfoType",
             "description": "Financial Info Type",
             "documentation": "The specific type of Quantitative Data linked this LE.",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "BALANCE SHEET"
-                    },
-                    {
-                        "value": "OUTLOOK"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "BALANCE SHEET"},
+                {"value": "OUTLOOK"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "BALANCE SHEET"
         },
@@ -1528,11 +1451,6 @@
             "sampleValue": "NO"
         },
         {
-            "name": "Keyword",
-            "description": "Keyword",
-            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-        },
-        {
             "name": "BusinessHierarchyName",
             "description": "Business Hierarchy Name",
             "documentation": "The text name of this Business Hierarchy.",
@@ -1557,11 +1475,6 @@
                 "DateTimeLastChanged",
                 "LastChangedUser->User[..1]"
             ]
-        },
-        {
-            "name": "DataFileCatalogEntry",
-            "description": "Data File Catalog Entry",
-            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
         },
         {
             "name": "TaxorRegulatoryAuthority",
@@ -1596,15 +1509,13 @@
         {
             "name": "User",
             "description": "User",
-            "documentation": "Each occurrence of User provides standard information applicable to an entity or person maintaining the data within the model",
+            "documentation": "Each occurrence of User provides standard information applicable to an entity or person mantaining the data within the model",
             "relationships": [
                 "UserName",
                 "UserEmail",
                 "DateTimeCreated"
             ],
-            "features": {
-                "io.dataset.atlas.site.hideNode": "true"
-            }
+            "features": {"io.dataset.atlas.site.hideNode": "true"}
         },
         {
             "name": "RatingsTypeCode",
@@ -1656,11 +1567,6 @@
             "sampleValue": "200 West Street"
         },
         {
-            "name": "LegalEntityRole",
-            "description": "Legal Entity Role",
-            "documentation": "THIS ENTITY HAS BEEN REMOVED FROM THE DATA MODEL AND IS PROVIDED FOR INFORMATION ONLY."
-        },
-        {
             "name": "PostalAddressLine6",
             "description": "Postal Address - Line 6",
             "documentation": "Supplemental Address Line.",
@@ -1678,16 +1584,10 @@
             "name": "RelationshipTypeNumberCode",
             "description": "Relationship Type Number Code",
             "documentation": "Indicates how many LE's are allowed in this Relationship Type. 1",
-            "characteristics": {
-                "enumeration": [
-                    {
-                        "value": "TWO"
-                    },
-                    {
-                        "value": "UNLIMITED"
-                    }
-                ]
-            },
+            "characteristics": {"enumeration": [
+                {"value": "TWO"},
+                {"value": "UNLIMITED"}
+            ]},
             "extend": "io.dataset.atlas.types.String",
             "sampleValue": "TWO"
         },

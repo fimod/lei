@@ -511,8 +511,6 @@
             "name": "AlternateNameType",
             "description": "Alternate Name Type",
             "documentation": "The name or term used for the entire class of this particular type or genre of Alternative Name 1",
-            "extend": "io.dataset.atlas.types.String",
-            "sampleValue": "SHORT NAME",
             "characteristics": {"enumeration": [
                 {"value": "Avox Issuer Name"},
                 {"value": "Avox Issuer Name"},
@@ -521,7 +519,9 @@
                 {"value": "Moody's Name"},
                 {"value": "Reuters Issuer Name"},
                 {"value": "S&P Name"}
-            ]}
+            ]},
+            "extend": "io.dataset.atlas.types.String",
+            "sampleValue": "SHORT NAME"
         },
         {
             "name": "LEAlternateNameText",
@@ -755,12 +755,6 @@
             "sampleValue": "Mr."
         },
         {
-            "name": "DataSourceLEKeyID",
-            "description": "Data Source LE Key ID",
-            "documentation": "The ID of the Legal Entity represented by this Data Source. Provides additional information regarding a Data Source.",
-            "sampleValue": "1000525.0"
-        },
-        {
             "name": "InfoStatus",
             "description": "Info Status",
             "documentation": "The state of status of Financial Information regarding a Legal Entity.",
@@ -834,6 +828,7 @@
             "name": "DataSourceName",
             "description": "Data Source Name",
             "documentation": "The text name describing this Data Source",
+            "extend": "io.dataset.atlas.types.String",
             "sampleValue": "Bloomberg"
         },
         {
@@ -1093,7 +1088,7 @@
             "documentation": "Each occurrence of Data Source names and identifies an orginating source of information or  data utilized within the FIMOD Legal Entity Data Model.",
             "relationships": [
                 "DataSourceName",
-                "DataSourceLEKeyID[0..1]",
+                "DataSourceLEKey->LegalEntityCommon[0..1](The ID of the Legal Entity represented by this Data Source. Provides additional information regarding a Data Source.)",
                 "DateTimeCreated",
                 "DateTimeLastChanged",
                 "LastChangedUser->User[..1]"
